@@ -1,0 +1,246 @@
+/** Main sections */
+
+body { 
+	/*background: #e8ebec; */
+	background: #050608;
+	font-family: Arial, Helvetica, sans-serif;
+	color : #ccc; 
+	margin:0;
+	padding:0;
+}
+img {
+	border:0;
+}
+#wrapper{
+	width:960px;
+	margin: 0px auto;
+	padding:0;
+	position:relative;
+}
+
+#social{
+	position:absolute;
+	z-index:9999;
+	right:55px;
+	top:0px;
+	text-align:right;
+	margin: 0px;
+	height: 40px;
+	width: 400px;
+}
+#social ul {
+	float:right;
+	list-style:none;
+	width:auto;
+	height:40px;
+	padding:0;
+	margin: 5px 0 0 0;
+}
+#social ul li {
+	float:left;
+	margin: 0 5px 0 0;
+}
+#logo {
+	text-align:center;
+	width:auto;
+	height:280px;
+	display:block;
+	margin:0px auto;
+	color: #000;
+}
+
+#logo img{
+}
+
+#logo h1{
+	margin:0px;
+}
+#logo h2{
+	margin:0px;
+}
+
+#main {
+	/*background: url(../images/main.jpg) no-repeat center;*/
+	width: 840px;
+	height: 150px;
+	overflow:hidden;
+	margin: 0px auto;
+	position: relative;
+	background-color:#FFFFFF;
+	
+	/*border-color: #dedede #bababa #aaa #bababa;*/
+	-moz-border-radius: 15px 15px 15px 15px;
+	-webkit-border-radius: 15px 15px 15px 15px;
+	border-radius: 15px 15px 15px 15px;
+}
+
+.main_title {
+	position: relative;
+	display: block;
+	text-align:center;
+	font-weight:bold;
+	width:auto;
+	font-size: 26px;
+	color: #000;
+	padding: 5px 0px;
+}
+
+.main_footer{
+	position: relative;
+	display: block;
+	text-align:center;
+	font-weight:bold;
+	width:auto;
+	font-size: 24px;
+	color: #000;
+	padding: 0px;
+}
+
+/** Facebook  Like Box*/
+
+#facebookbox {
+	text-align:center;
+	background: #FFF;
+	width:830px;
+	height:200px;
+	padding: 3px;
+	margin:0px auto;
+	overflow:hidden;
+}
+
+/** Countdown */
+
+#countdown {
+	width:770px;
+	height:60px;
+	margin:5px 0 5px 220px;
+}
+.dash {
+	width: 65px;
+	height: 60px;
+	background: transparent url(../images/box.jpg) 0 0 no-repeat;
+	float: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+.dash .digit {
+	font-size: 30px;
+	font-weight: bold;
+	float: left;
+	width: 25px;
+	text-align: center;
+	font-family: Arial;
+	color: #2f2e2e;
+	position: relative;
+	margin: 7px 0 0 5px;
+}
+
+.dash_title {
+	position: absolute;
+	display: block;
+	bottom: -3px;
+	text-align:center;
+	font-weight:bold;
+	width:65px;
+	font-size: 10px;
+	color: #2f2e2e;
+	
+}
+/** subscribe div, the one with the newsletter form and social icons */
+#subscribe {
+	width:840px;
+	height:60px;
+	margin:0px auto;
+	padding: 5px 0px;
+	background-color:#323232;
+	
+	/*border-color: #dedede #bababa #aaa #bababa;*/
+	-moz-border-radius: 0px 0px 15px 15px;
+	-webkit-border-radius: 0px 0px 15px 15px;
+	border-radius: 0px 0px 15px 15px;
+}
+.subscribe-text{
+	float:left;
+	width:120px;
+	height:25px;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	padding: 10px 0 0 20px;
+}
+
+.subscribe-text2{
+	float:left;
+	width:170px;
+	height:25px;
+	color:#fff;
+	font-size:14px;
+	font-weight:bold;
+	padding: 10px 0 0 40px;
+}
+.subscribe-input{
+	float:left;
+	width:305px;
+	height:40px;
+	padding: 0px;
+}
+.subscribe-input2{
+	float:left;
+	width:100px;
+	height:40px;
+	padding: 0px;
+}
+#email_field{
+	float:left;
+	background:url(../images/input.jpg) no-repeat top;
+	border:0;
+	width:191px;
+	height:38px;
+	display:block;
+	color:#fff;
+	text-align:center;
+	font-size:12px;
+	margin:0;
+	padding:0;
+}
+#newsletter {
+	text-align:center;
+	height:40px;
+	position: relative;
+	padding: 10px 0px;
+}
+
+#newsletterfields {
+	width:900px;
+	margin:auto;
+	height:40px;
+	padding: 0px;
+}
+#submit{
+	margin:0;
+}
+
+/** Twitter status feed */
+
+#twitstat {
+background: url(../images/twitterbar.jpg) no-repeat;
+width:695px;
+height:93px;
+color:#2f2e2e;
+font-size:14px;
+padding: 0 20px 0 70px;
+margin:0px auto;
+overflow:hidden;
+}
+#twitstat a{
+color:#2f2e2e;
+font-weight:bold;
+}
+#twitstat a:hover{
+color:#005ab3;
+}
+#twitstat ul {
+list-style:none;
+padding-top:15px;
+}

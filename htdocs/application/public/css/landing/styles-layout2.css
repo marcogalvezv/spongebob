@@ -1,0 +1,126 @@
+.main-c1 { float:right; width:400px;  }
+.main-c2 { float:left; width:512px;  height:482px; background:url(../../images/landing/layout2/main-hand.png) no-repeat; display:block;}
+.main-c2 img { margin-top:79px; margin-left:64px;}
+.main-hand { float:left; width:512px;  height:482px; display:block;}
+.main-hand img { margin-top:0px; margin-left:0px;}
+
+.main-content { height:422px; }
+h1.title { margin-top:30px; font-size:40px; text-transform:none; font-family: 'Lato',sans-serif; font-weight: 800; text-align:left; line-height:1.2em; }
+.main-content h2  { color: #ECECEC; font-family: 'Lato',sans-serif; font-size: 22px; margin: 20px 0 0; text-shadow: 1px 1px 2px #262626;  font-weight:300; line-height:1.5em; text-align:left;}
+.buttons { font-size: 14px;  margin: 60px 0 35px; }
+	
+.button2s a { 
+
+	font-family: 'Lato',sans-serif; 
+	color:#678c99;
+    float:left;
+    text-shadow:1px 1px 1px #ffffff;
+    padding:12px 30px 0;
+    height:42px;
+    width:120px;
+    border-radius:5px; 
+    display:block;
+    background-color:#dededf;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.34) inset, 0 -1px 1px rgba(0, 0, 0, 0.28) inset, 0 1px 3px rgba(0, 0, 0, 0.41);
+    font-size:19px;
+	text-transform:none;
+  }
+  
+.button2s a:hover { color:#1fc1ff; background-color:#fcfcfc; }
+  
+.features { padding: 60px 0 0; }
+
+.tabs {	position: relative; float:left; width:500px;}
+
+.tabs .moving_bg2 {
+	padding: 5px 15px 30px ;
+	background-image:url(../../images/landing/fl-tabs.png);
+ 	position: relative;
+	width: 266px;
+	height:11px;
+	z-index: 190;
+	top: 0;
+	background-position:center;
+	padding-bottom: 0px;
+	background-repeat: no-repeat;
+}
+
+.tabs .tab_item {
+	display: block;  
+	z-index: 200;
+	position: relative;
+	cursor: pointer;
+}
+
+.tabbed_content .slide_content {
+  
+	overflow: hidden;
+	padding: 0 0px;
+	margin:0 0 0 28px;
+	position: relative;
+	width: 286px;
+	height:780px;
+}
+
+.tabbed_content .slide-bg {
+ 	background: url(../../images/landing/layout2/mockup2.png) no-repeat;
+
+	overflow: hidden;
+	padding: 0 0px;
+	margin:55px 0 0;
+	position: relative;
+	width: 337px;
+	height:780px;
+}
+
+.tabslider { width: 5000px; }
+
+.tabslider ul {	float: left;width: 286px; overflow:hidden;padding: 0px;margin: 104px 0 0 1px; } 
+.tabbed_content { margin:30px 0 0; }
+
+.featu { padding: 0 180px 0 80px; margin: 40px 0 70px; }
+
+.featu h1 { margin-top: 20px; }
+
+.foo-button h1 { text-align:center; }
+.top-nav {  z-index:600;} .top-nav2 {  z-index:650;} .top-arrow {  z-index:610; }
+
+ @media(min-width: 768px) and (max-width: 979px) {
+.main-c2 { display:none; }
+.main-c1 { float: none; width: 540px; margin: 0 auto; }
+.main-content { height: 270px;}
+.buttons { font-size: 14px; margin: 60px auto 55px; }
+.features h1 { font-size: 28px; }
+.tabs {   float: left;  position: relative;  width: 380px; }
+.featu {  margin: 40px 0 70px;  padding: 0 80px 0 20px; }
+h1.title {   text-align:center;}
+.main-content h2 {text-align:center;}
+}
+
+@media(min-width: 480px) and (max-width: 767px) {
+.main-c2 { display:none; }
+.main-c1 { float: none; width: 480px; margin: 0 auto; }
+.main-content { height: 270px;}
+.buttons { font-size: 14px; margin: 60px auto 55px; }
+.slide-bg { display:none; } 
+.tabs { height:300px;  float: left;  position: relative; display:block;  margin:0 auto; }
+.tabbed_content { height:720px; }
+.featu {  margin: 40px 0 70px;  padding: 0 20px 0 20px; }
+.features h1 { font-size: 22px; }
+h1.title { font-size:30px; text-align:center;}
+.main-content h2 {text-align:center;}
+   }
+   
+@media(max-width:480px) {  .main-c2 { display:none; }
+.main-c1 { float: none; width: 300px; margin: 0 auto; }
+.main-content { height: 380px;}
+.buttons { font-size: 14px; margin: 60px auto 55px; }
+.slide-bg { display:none; } 
+.tabs { height:300px;  float: left;  position: relative; display:block;  margin:0 auto; width:300px; }
+.tabbed_content { height:780px; }
+.featu {  margin: 40px 0 70px;  padding: 0 20px 0 20px; }
+.features h1 { font-size: 22px; }
+h1.title { font-size:30px; text-align:center;}
+.main-content h2 {text-align:center;}
+.button2s a { margin:0 auto; clear:both; display:block; margin-bottom:20px; } 
+.button2s   { margin:0 auto;  width:180px; } }

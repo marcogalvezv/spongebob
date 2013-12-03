@@ -1,0 +1,32 @@
+
+.top-nav h1 {  background:url(../../../images/landing/skins/blue/logo.png) no-repeat; }
+
+.button2 a { 
+    background: -moz-linear-gradient(top, #42d2f0 1%, #26bee8 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#42d2f0), color-stop(100%,#26bee8)); /* Chrome,Safari4 */
+    background: -webkit-linear-gradient(top, #42d2f0 1%,#26bee8 100%); /* Chrome10 and Safari5 */
+    background: -o-linear-gradient(top, #42d2f0 1%,#26bee8 100%); /* Opera 11.10 */
+    background: -ms-linear-gradient(top, #42d2f0 1%,#26bee8 100%); /* IE10 */
+    background: linear-gradient(to bottom, #42d2f0 1%,#26bee8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42d2f0', endColorstr='#26bee8',GradientType=0 ); /* IE6-8 */
+	
+  }
+ 
+.button2 a:hover {   
+    background: -moz-linear-gradient(top, #10b6e6 1%, #0798d9 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#10b6e6), color-stop(100%,#0798d9)); /* Chrome,Safari4 */
+    background: -webkit-linear-gradient(top, #10b6e6 1%,#0798d9 100%); /* Chrome10 and Safari5 */
+    background: -o-linear-gradient(top, #10b6e6 1%,#0798d9 100%); /* Opera 11.10 */
+    background: -ms-linear-gradient(top, #10b6e6 1%,#0798d9 100%); /* IE10 */
+    background: linear-gradient(to bottom, #10b6e6 1%,#0798d9 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#10b6e6', endColorstr='#0798d9',GradientType=0 ); /* IE6-8 */
+	
+ }
+ 
+ 
+ .pagination li a {    background-image: url(../../../images/landing/mockup/pagination-blue.png); }
+ 
+ 
+#tabbed-content ul li.nav-one a.current  {  background:url(../../../images/landing/skins/blue/tabbed-icon1.png) scroll top center no-repeat; }
+#tabbed-content ul li.nav-two a.current  {  background:url(../../../images/landing/skins/blue/tabbed-icon2.png) scroll top center no-repeat; }
+#tabbed-content ul li.nav-three a.current  {  background:url(../../../images/landing/skins/blue/tabbed-icon3.png) scroll top center no-repeat; }

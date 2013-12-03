@@ -1,0 +1,56 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+DROP TABLE IF EXISTS `taxi_ride` ;
+DROP TABLE IF EXISTS `ride` ;
+DROP TABLE IF EXISTS `booking` ;
+DROP TABLE IF EXISTS `favorites_taxi` ;
+DROP TABLE IF EXISTS `favorites_company` ;
+DROP TABLE IF EXISTS `taxilocation` ;
+DROP TABLE IF EXISTS `address` ;
+DROP TABLE IF EXISTS `destination` ;
+DROP TABLE IF EXISTS `company` ;
+DROP TABLE IF EXISTS `company_period` ;
+DROP TABLE IF EXISTS `period` ;
+DROP TABLE IF EXISTS `package` ;
+DROP TABLE IF EXISTS `taxi_user` ;
+DROP TABLE IF EXISTS `taxi` ;
+DROP TABLE IF EXISTS `type` ;
+DROP TABLE IF EXISTS `usergroup` ;
+DROP TABLE IF EXISTS `user` ;
+DROP TABLE IF EXISTS `country` ;
+DROP TABLE IF EXISTS `city` ;
+DROP TABLE IF EXISTS `profile` ;
+DROP TABLE IF EXISTS `userpersistence` ;
+DROP TABLE IF EXISTS `settings` ;
+DROP TABLE IF EXISTS `country_iso` ;
+DROP TABLE IF EXISTS `language_iso` ;
+DROP TABLE IF EXISTS `language` ;
+DROP TABLE IF EXISTS `checkin` ;
+DROP TABLE IF EXISTS `coverage` ;
+DROP TABLE IF EXISTS `points` ;
+DROP TABLE IF EXISTS `prize` ;
+DROP TABLE IF EXISTS `badge` ;
+DROP TABLE IF EXISTS `badge_earned` ;
+DROP TABLE IF EXISTS `subscription` ;
+
+
+/* DROP VIEWS */
+DROP VIEW IF EXISTS `v_userprofile`;
+DROP VIEW IF EXISTS `v_company`;
+/*DROP VIEW IF EXISTS `v_badge`;
+DROP VIEW IF EXISTS `v_badge_earned`;
+DROP VIEW IF EXISTS `v_ads`;
+DROP VIEW IF EXISTS `v_badge_stats`;
+DROP VIEW IF EXISTS `v_notification`;
+DROP VIEW IF EXISTS `v_order_detail_total`;
+DROP VIEW IF EXISTS `v_orders`;
+DROP VIEW IF EXISTS `v_order_detail`;
+DROP VIEW IF EXISTS `v_farmacorp_reportall`;
+DROP VIEW IF EXISTS `v_farmacorp_credits`;
+DROP VIEW IF EXISTS `v_farmacorp_inactive`;
+*/
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

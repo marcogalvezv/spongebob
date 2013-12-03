@@ -1,0 +1,32 @@
+<IfModule mod_rewrite.c>
+# Block access to .svn files
+  RewriteRule ^(.*/)?\.svn/ - [F,L]
+  ErrorDocument 403 "Access Forbidden"
+
+Options -Indexes
+
+RewriteEngine On
+ 
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} !^beta\.pidamosalgo\.com$ [NC]
+RewriteRule ^(.*)$ http://beta.pidamosalgo.com/$1 [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php/$1 [L]
+
+</IfModule>
+
+#AddCharset ISO-8951
+
+#enable some enhancements on php.ini
+# File modified on Tue Oct 16 03:19:56 2012 by server
+# For security reasons, mod_php is not used on this server. Use a php.ini file for php directives
+# php_value max_execution_time 3600
+# For security reasons, mod_php is not used on this server. Use a php.ini file for php directives
+# php_value max_input_time 3600
+# For security reasons, mod_php is not used on this server. Use a php.ini file for php directives
+# php_value default_socket_timeout 1200
+# For security reasons, mod_php is not used on this server. Use a php.ini file for php directives
+# php_value memory_limit 1024M

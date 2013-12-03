@@ -1,0 +1,2 @@
+MAILTO=carlos@online.com.bo
+*/15 * * * * /var/www/vhosts/flysocial.com/dev/cron/mailing.sh

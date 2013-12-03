@@ -1,0 +1,269 @@
+/*--------------Styles Generals---------------*/
+input, textarea, select{
+	border:1px solid #b1b1b1;
+	padding: 4px 0 3px 2px;
+/*	background: white url(../images/background/input_bg.png) repeat-x -2px -2px;*/
+    background: url("../images/background/gradient_v2.gif") repeat-x scroll left top #FEFFFF;
+
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+}
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus { 
+	border: 1px solid black; 
+/*	background: #fbdea5;*/
+	background: #fbdea5 url("../images/background/gradient_v2_2.gif") repeat-x scroll left top;
+}
+/*input[type=password]:focus {
+	border: 1px solid black; 
+	background: #fbdea5 url("../images/background/gradient_v2_2.gif") repeat-x scroll left top;
+}
+*/
+input[type=text]:focus { border: 1px solid black; background-color: #fbdea5;}
+textarea:focus { border: 1px solid black; background-color: #fbdea5;}
+
+fieldset{
+	margin:5px auto;
+	border:1px solid #b1b1b1;
+	padding:5px;
+/*	background: #e6effd;*/
+}
+legend{
+	/*color:#A3A3A3;*/
+	border:1px solid #b1b1b1;
+	margin:0 10px;
+	padding:2px 10px 0 10px;
+	color: #04468c;
+	font-weight: bold;
+}
+
+label{
+	color:#333;
+	/*text-align:left;
+
+	display: block;
+	float: left;
+	clear: left;*/
+	font-size: 1em;
+	margin: 0 0 0 0;
+}
+	
+table{
+	margin-top: 5px;
+}
+
+#tableorderdetail tbody tr{
+height:18px;
+}
+/*#tableorderdetail thead{
+height:18px;
+}
+#tableorderdetail tbody{ 
+height:100px;
+overflow-y:auto;
+overflow-x:hidden;
+}
+#tableorderdetail tfoot{
+height:18px;
+}*/	
+/*--------------Styles Main Form---------------*/
+.formshop{
+  /* clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+/*  border-color:#A3A3A3;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE 
+  margin: 0;*/
+  width:800px;
+}
+.formshopgrid{
+  /* clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
+/*  border-color:#A3A3A3;/*gray dark
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px;        /* padding in fieldset support spotty in IE 
+  margin: 0;*/
+  width:99%;
+}
+	
+.contentform { 
+	width: 100%;
+	margin: 0 auto;
+}
+
+.form20per { 
+	width: 20%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form30per { 
+	width: 30%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form40per { 
+	width: 40%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form50per { 
+	width: 50%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form60per { 
+	width: 60%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.form70per { 
+	width: 70%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form80per { 
+	width: 80%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form85per { 
+	width: 85%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form90per { 
+	width: 90%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	margin-top: 5px;
+}
+.form100per { 
+	width: 100%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
+.formdialog30per { 
+	width: 28.5%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.formdialog40per { 
+	width: 38.5%;
+	float: left;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 0;
+}
+.formdialog50per { 
+	width: 48.5%;
+	float: left;
+	position: relative;
+	padding-left: 15px;
+	padding-right: 0px;
+	padding-bottom: 0;
+}
+.formdialog60per { 
+	width: 58.5%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.formdialog70per { 
+	width: 68.5%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.formdialog100per { 
+	width: 97%;
+	float: left;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+
+.navigationpanel { 
+	width: 12%;
+	min-height: 150px;
+	float: left;
+	position: relative;
+	border: 1px solid #a6c9e2;
+	margin-top: 10px;
+	margin-right: 5px;
+	padding: 5px;
+}
+#maindata { 
+	width: 600px;
+	float: left;
+}
+#auxdata {
+	width: 170px;
+	float: left;
+}
+
+.formtext input[type=text],input[type=password]
+{
+	width:100%;
+}
+
+.formtext input[type=text]:disabled {background: #DFE8F6; }
+
+.formtext select
+{
+	width:100%;
+}
+.fieldreq{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:normal;
+	color:red;
+	padding:0px 0px 0px 2px;
+}

@@ -1,0 +1,114 @@
+.cf:after {
+    clear: both;
+}
+.cf:before, .cf:after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.cf:before, .cf:after {
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.cf {
+}
+
+ul, ol {
+    margin-left: 1.8em;
+}
+
+.menucontainer {
+    background: #FFF;
+	padding:10px;
+}
+
+#place-menu .menu {
+    float: left;
+    width: 675px;
+}
+#place-cart {
+    float: left;
+    width: 290px;
+}
+
+#place-menu .menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#place-menu .menu ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 20px;
+}
+#place-menu .menu ul li ul.cf {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 20px;
+}
+
+#place-menu .menu ul li ul li.active {
+    border: 1px dashed #D32706;
+}
+
+#place-menu .menu ul li h3 {
+    color: #D32908;
+    font-size: 1.8em;
+    font-weight: normal;
+    line-height: 140%;
+}
+#place-menu .menu ul li ul li.left {
+    clear: left;
+	list-style-type: none;
+}
+#place-menu .menu ul li ul li.even {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+#place-menu .menu ul li ul li {
+    background-color: #FEF8F8;
+    border: 1px solid #FEF8F8;
+    display: block;
+    float: left;
+    font-size: 1.3em;
+    line-height: 22px;
+    margin-bottom: 3px;
+    margin-right: 20px;
+    padding: 6px;
+    width: 303px;
+}
+
+#place-menu .menu ul li ul li span.name {
+    float: left;
+    line-height: 22px;
+    width: 190px;
+}
+
+#place-menu .menu ul li ul li a.add {
+    background: none repeat scroll 0 0 #D42705;
+    border-radius: 6px 6px 6px 6px;
+    color: #FFFFFF;
+    display: block;
+    float: right;
+    font-size: 2.1em;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    width: 33px;
+}
+#place-menu .menu ul li ul li .add-disabled-delivery, #place-menu .menu ul li ul li .add-disabled-address, #place-menu .menu ul li ul li .add-disabled-weekday, #place-menu .menu ul li ul li .add-disabled-closed {
+    opacity: 0.1;
+}
+
+#place-menu .menu ul li ul li span.price {
+    float: right;
+    font-weight: bold;
+    margin-right: 8px;
+    text-align: right;
+    width: 70px;
+}

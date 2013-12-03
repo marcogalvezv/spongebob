@@ -1,0 +1,125 @@
+/*=============FRAMES=============*/
+.frame5per { 
+	width: 5%;
+	float: left;
+	position: relative;
+}
+.frame10per { 
+	width: 10%;
+	float: left;
+	position: relative;
+}
+.frame15per { 
+	width: 15%;
+	float: left;
+	position: relative;
+}
+.frame20per { 
+	width: 20%;
+	float: left;
+	position: relative;
+}
+.frame25per { 
+	width: 25%;
+	float: left;
+	position: relative;
+}
+.frame30per { 
+	width: 30%;
+	float: left;
+	position: relative;
+}
+.frame35per { 
+	width: 35%;
+	float: left;
+	position: relative;
+}
+.frame40per { 
+	width: 40%;
+	float: left;
+	position: relative;
+}
+.frame45per { 
+	width: 45%;
+	float: left;
+	position: relative;
+}
+.frame50per { 
+	width: 50%;
+	float: left;
+	position: relative;
+}
+.frame55per { 
+	width: 55%;
+	float: left;
+	position: relative;
+}
+.frame60per { 
+	width: 60%;
+	float: left;
+	position: relative;
+}
+.frame65per { 
+	width: 65%;
+	float: left;
+	position: relative;
+}
+.frame70per { 
+	width: 70%;
+	float: left;
+	position: relative;
+}
+.frame75per { 
+	width: 75%;
+	float: left;
+	position: relative;
+}
+.frame80per { 
+	width: 80%;
+	float: left;
+	position: relative;
+}
+.frame85per { 
+	width: 85%;
+	float: left;
+	position: relative;
+}
+.frame90per { 
+	width: 90%;
+	float: left;
+	position: relative;
+}
+.frame93per { 
+	width: 93%;
+	float: left;
+	position: relative;
+}
+.frame95per { 
+	width: 97%;
+	float: left;
+	position: relative;
+}
+.frame100per { 
+	width: 100%;
+	float: left;
+	position: relative;
+}
+.frame100perH{height:auto}
+/*=============FRAMES COLUMNS=============*/
+
+.frame2columns { 
+	width: 50%;
+	float: left;
+	position: relative;
+}
+.frame3columns { 
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+.frame4columns {
+	width: 25%;
+	float: left;
+	position: relative;
+}
+/*=============END FRAMES=============*/

@@ -1,0 +1,337 @@
+label {
+	display:block;
+	font-size:15px;
+	color:#444;
+	margin-bottom:3px;
+}
+p {
+	font:normal 12px Helvetica, Arial, sans-serif;
+	line-height:18px;
+	letter-spacing:normal;
+	color:#555;
+	padding:0 0 1em;
+}
+#contentdiv{
+	margin:0 auto;
+	width:400px;
+	text-align:left;
+}
+
+#contentdiv input{
+	width:90%;
+	text-align:left;
+}
+
+#contentdiv label{
+	text-align:left;
+}
+
+.inputs{
+	padding:10px;
+}
+
+.actions{
+	padding:10px;
+}
+
+.inputfields{
+	margin:10px 0px;
+	display:block;
+}
+
+#headerdiv {
+	margin:0 auto;
+	text-align:left;
+	width:955px;
+	position:relative;
+}
+
+.fl-right {
+	float:right;
+}
+.fl-left {
+	float:left;
+}
+.cl-right {
+	clear:right;
+}
+.cl-left {
+	clear:left;
+}
+.cl-both {
+	clear:both;
+}
+.clearfix {
+	clear:both;
+	height:0;
+	font-size:1px;
+	line-height:1px;
+	width:100%;
+	overflow:hidden;
+}
+
+.block {
+	display:block;
+}
+.bigger {
+	font-size:1.2em;
+}
+/* self-clear floats */
+.clearme:after {
+	content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+* html .clearme { /* IE6 */
+	height: 1%;
+	}
+*:first-child+html .clearme { /* IE7 */
+	min-height: 1px;
+	}
+
+/* textpage */
+blockquote {
+	margin:0 2em;
+}
+
+#content {
+	width:100%;
+	background:#fff;
+}
+#contentdiv {
+	padding:40px 0;
+}
+#subhead {
+	width:100%;
+	background:#f0f0f0;
+	text-align:center;
+	border-top:1px solid #fff;
+}
+#subheaddiv {
+	width:955px;
+	margin:0 auto;
+	text-align:left;
+}
+#subhead h1 {
+	padding:0;
+	margin:42px 0;
+	font: normal 26px "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, sans-serif;
+	line-height:26px;
+	letter-spacing: -1px;
+	font-weight:normal !important;
+	float:left;
+}
+
+#subhead h1 a {
+	color:#222;
+	text-decoration:none;
+}
+#subhead h1 b, #subhead h1 a:visited b, #subhead h1 a:link b {
+	font-weight:normal;
+	color:#88201b;
+}
+
+/* end alternative subhead */
+
+#subnav {
+	float:right;
+	font-size:12px;
+	color:#777;
+	margin:42px 0;
+}
+
+#subnav ul li {
+	margin:0 5px;
+	display:block;
+	float:left;
+}
+
+#subnav a, #subnav a:visited {
+	color:#777;
+	display:block;
+	padding:4px 10px;
+	text-decoration:none;
+}
+
+#subnav a:hover,
+#subnav a:focus,
+#subnav a.active,
+#subnav a.subnav1,
+#subnav a.subnav2,
+#subnav a.subnav3,
+#subnav a.subnav4,
+body.aclogin #subnav a.subnav1,
+body#getpass #subnav a.subnav2,
+#subnav a.subnav1,
+#subnav a.subnav2 {
+	color:#8d1c1c;
+	text-decoration:none;
+	background:#d8d8d8;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+}
+body#getpass #subnav a.subnav1 {
+	color:#777;
+	display:block;
+	padding:4px 10px;
+	text-decoration:none;
+	background:none;
+}
+
+#acloginpod {
+	width:320px;
+	background:#ebebeb url(../images/acloginpodbg.gif) repeat-x;
+	border:1px solid #d3d3d3;
+	-webkit-border-radius:7px;
+	-moz-border-radius:7px;
+}
+#acloginpod .acloginform {
+	margin:22px;
+}
+#acloginpod form, #acloginpod fieldset {
+	margin:0 !important;
+	padding:0 !important;
+}
+#acloginpod legend em {
+	position:absolute;
+	left:-9999em;
+}
+#acloginpod label span.loginerror {
+	font-size:10px;
+	color:#8d1c1c;
+}
+#acloginpod input.textinput {
+	width:100%;
+	border:1px solid #d3d3d3;
+	background:#fff url(../images/background/input_bg.png) repeat-x;
+	font-size:15px;
+	color:#000;
+	text-indent:7px;
+	padding:7px 0;
+	margin-bottom:10px;
+}
+
+#acloginpod input:focus {
+	border-color:#77b2ee;
+}
+#acloginpod input.error, #acloginpod input.error:focus {
+	border-color:#8d1c1c;
+}
+
+#acloginpod .errormsg {
+	font-size:14px;
+	font-weight:bold;
+	color:#8d1c1c;
+	margin-bottom:15px;
+}
+#acloginpod .acloginbttn {
+	display:block;
+	float:right;
+	width:121px;
+	height:42px;
+	background:url(../images/acloginpodbttn.gif) no-repeat;
+	margin-top:10px;
+}
+#acloginpod .acloginbttn:hover, #acloginpod .acloginbttn:focus {
+	background-position:right top;
+}
+#acloginpod .getpassbttn {
+	display:block;
+	float:right;
+	width:121px;
+	height:42px;
+	background:url(../images/recover_login.gif) no-repeat;
+	margin-top:10px;
+}
+#acloginpod .getpassbttn:hover, #acloginpod .getpassbttn:focus {
+	background-position:right top;
+}
+#acloginpod .aclogin-action label {
+	font-size:12px;
+	color:#777;
+	border-bottom:1px solid #d3d3d3;
+	padding:0 0 5px;
+	margin:0 0 7px;
+}
+#acloginpod .aclogin-action label input {
+	vertical-align:middle;
+}
+#acloginpod a.forgotpass {
+	display:block;
+	font-size:12px;
+	color:#aaa;
+}
+#acloginpod a.forgotpass:hover,
+#acloginpod a.forgotpass:focus {
+	color:#8d1c1c;
+}
+body.aclogin .lcol {
+	float:left;
+	width:340px;
+}
+body.aclogin .rcol {
+	width:545px;
+	float:right;
+	padding:0 0 0 45px;
+	margin-right:0;
+	border-left:1px solid #d3d3d3;
+}
+body.aclogin .pagecontent {
+	margin:0;
+	padding:0;
+}
+body#getpass #acloginpod h2 {
+	font-size:20px;
+	letter-spacing:-1px;
+	padding:0 0 0.5em;
+	font-weight:normal;
+	color:#005e8f;
+}
+body#getpass #acloginpod p {
+	padding:0 0 2em;
+}
+body#getpass #acloginpod p strong {
+	color:#8d1c1c;
+	font-weight:normal;
+}
+
+body.aclogin #error_div {
+	width:282px;
+	background:#8d1c1c;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	padding:15px 20px;
+	margin:0 0 20px;
+	color:#fff;
+}
+
+body.aclogin #error_div strong, body.tellus #error_div strong {
+	display:block;
+	float:left;
+	font-size:16px;
+	padding-right:15px;
+	line-height:1em;
+}
+body.aclogin #error_div p, body.tellus #error_div p  {
+	font-size:12px;
+	color:#fff;
+	line-height:1.5em;
+	padding:0;
+}
+
+body.aclogin input.error {
+	border-color:#8d1c1c;
+}
+.inquirebttn {
+	display:block;
+	float:right;
+	width:123px;
+	height:44px;
+	background:url(../images/contact_inquirebttn.gif) no-repeat;
+	margin-top:10px;
+}
+.inquirebttn:hover, .inquirebttn:focus, #acloginpod .getpassbttn:focus {
+	background-position:right top;
+}

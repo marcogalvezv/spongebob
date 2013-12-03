@@ -1,0 +1,61 @@
+div.tabla
+{
+	clear: none;
+	overflow: auto;
+}
+
+div.fila
+{
+	clear: both;
+}
+
+div.col_titulo
+{
+	float: left;
+	padding: 5px;
+	background: #F0E0A0;
+	border-color: #F0E0A0;
+	border-style: solid;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+}
+
+div.col
+{
+	float: left;
+	text-align: left;
+	padding-bottom: 5px;/*update 5px*/
+	padding-top: 5px;/*update 5px*/
+	border-color: #F0E0A0;
+	border-style: solid;
+	border-right-width: 0px;
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+}
+div.colsingle
+{
+	float: left;
+	/*text-align: left;*/
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
+div.collabel
+{
+	float: left;
+	text-align: left;
+}
+.tabla .textbox
+{
+/*	border:solid;
+	border-bottom-color:#000000;
+	border-width:1px;*/
+	width:350px;
+}
+.btn
+{
+	width:100px;
+	height:40px;
+}

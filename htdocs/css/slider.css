@@ -1,0 +1,173 @@
+#wraperSlides {
+	width:100%;
+/*	width:840px;*/
+	height:300px;
+	position:relative;
+}
+
+#ribbon {
+	position:absolute;
+	top:-3px;
+	left:-15px;
+	z-index:500;
+}
+
+#frame {
+	position:absolute;
+	z-index:0;
+	width:840px;
+	height:375px;
+	top:-3px;
+	left:-80px;
+}
+
+/*
+	Slideshow
+*/
+
+#slides {
+	position:absolute;
+	top:15px;
+	left:15px;
+	z-index:100;
+}
+
+/*
+	Slides container
+	Important:
+	Set the width of your slides container
+	Set to display none, prevents content flash
+*/
+
+.slides_container {
+	width:650px;
+	overflow:hidden;
+	position:relative;
+	display:none;
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+
+.slides_container div.slide {
+	width:650px;
+	height:300px;
+	display:block;
+}
+
+
+/*
+	Next/prev buttons
+*/
+
+#slides .next,#slides .prev {
+	position:absolute;
+	top:120px;
+	left:-40px;
+	width:24px;
+	height:43px;
+	display:block;
+	z-index:101;
+}
+
+#slides .next {
+	left:665px;/*585px;*/
+}
+
+/*
+	Pagination
+*/
+
+.pagination {
+	margin:26px auto 0;
+	width:100px;
+}
+
+.pagination li {
+	float:left;
+	margin:0 1px;
+	list-style:none;
+}
+
+.pagination li a {
+	display:block;
+	width:12px;
+	height:0;
+	padding-top:12px;
+	background-image:url(../images/slides/img/pagination.png);
+	background-position:0 0;
+	float:left;
+	overflow:hidden;
+}
+
+.pagination li.current a {
+	background-position:0 -12px;
+}
+
+/*
+	Caption
+*/
+
+.caption {
+	z-index:500;
+	position:absolute;
+	bottom:5px;
+	left:0;
+	height:30px;
+	padding:5px 20px 0 20px;
+	background:#000;
+	background:rgba(0,0,0,.5);
+	width:665px;
+	font-size:1.3em;
+	line-height:1.33;
+	color:#fff;
+	border-top:1px solid #000;
+	text-shadow:none;
+}
+
+/*=============RAILS=============*/
+.slider {
+    /*-moz-border-radius: 9px 9px 9px 9px;
+    background: none repeat scroll 0 0 #ECFBFE;
+    border: 2px solid #339999;*/
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.slider .contentRail {
+	padding: 10px;
+	font-size:11px;
+	text-align:center;
+}
+#sliders a{/*text-decoration:none;*/color:#339999;}
+/*.slider a:visited{text-decoration:none;}*/
+#sliders a:hover{/*text-decoration:underline;*/color:#003366;/*line:1px solid #003366;*/}
+
+#sliderViewedItems{overflow:auto;min-height:250px;width:700px;}
+#sliderViewedItems p{color:#000;margin:0;padding:0;}
+#Previous, #Next{width:20px;height:85px;float:left;}
+#Previous img, #Next img{padding-top:150px;}
+#Deal{width:84%;height:325px;float:left;margin-top:0px;}
+#Deal .imgDeal{width:40%;float:left;margin-top:0px;}
+#Deal .textDeal{width:60%;float:left;}
+#Deal .textDeal span{color:#000;}
+
+
+/*=============VIEWS=============*/
+.contentView{padding:15px;width:98.5%;font-size:12px;overflow:auto;}
+
+/*=============DEALS=============*/
+.deal{padding:5px;width:117px;height:170px;float:left;}
+.panelDeal{padding:3px;width:111px;height:164px;}
+.contentDeal{padding:5px;width:101px;height:154px;font-size:10px;}
+.titleDeal{width:100%;height:27px;float:left;}
+/*.imgDeal{width:100%;height:70px;float:left;}
+/*.imgDeal img{width:90px;/*margin-top:5px;*margin-left:6px;}*/
+
+/*=============GRADIENTS=============*/
+.BGpanelWhite{background:url(../images/background/bg_panel_white.jpg) repeat-x top #fff;}

@@ -1,0 +1,22 @@
+ 
+ .main-content { height:160px; }
+.blog h1 { font-family: 'Lato',sans-serif; font-size:24px; padding:0 80px; margin:0 0 50px;line-height:2em;  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); color:#fff; }
+.blog h1 strong {  font-family: 'Oleo Script', cursive; color:#678c99;  font-size:28px; }
+.blog h1 span { font-family: 'Lato',sans-serif; font-size:24px; color:#678c99; font-family: 'Droid Sans', sans-serif;}
+
+.social { float:left; margin:0 10px;}
+.blog-social { background:url(../../images/landing/blog-bg.png) repeat-x; height:24px; display:block; width:40%;  float:left;}
+
+.top-nav a {
+    background: url("../../images/landing/home.png") no-repeat scroll 0 0 transparent;
+     
+} 
+.blog-content { background:url(../../images/landing/bg.png)  repeat; border-radius:3px;   margin-bottom:30px; box-shadow: 1px 0 4px #454545; padding:60px;
+ }
+ 
+ .blog-content h1 { font-size:30px; float:left; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); }
+ .blog-content h2 {font-family: 'Lato',sans-serif; font-size:14px; float:right; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8); color:#678c99; }
+ .blog-content img {width:100%; margin-top:30px;}
+ .blog-content p { font-family: 'Droid Sans', sans-serif; font-size:14px; line-height:25px; font-weight:400; margin-top:30px; text-align:justify; }
+ 
+ .footer { height: 50px; padding: 20px 0;  }

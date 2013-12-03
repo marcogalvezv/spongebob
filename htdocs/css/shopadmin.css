@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0px;
+	padding:0px 0px 0px 0px;
+	/*background: #e6e9eb url(../images/background/bg_subpage.jpg) repeat-x;*/
+	font: 11px/18px Verdana, Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*body {  background-color: transparent; color: #e1e1e1;  }*/
+
+/*========================================================<SHOP LAYOUT>=============================================*/
+
+.shopcontent{
+	padding: 0px 20px;
+	min-height:400px;
+}
+
+/*.shopcontent h2{
+	margin: 5px;
+	font-size: 24px;
+	font-family: Verdana;
+	color: #104a45;
+}
+*/

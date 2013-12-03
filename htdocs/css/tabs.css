@@ -1,0 +1,115 @@
+ul.tabs {
+	margin: 0;
+	padding: 0;
+	float: left;
+	list-style: none;
+	height: 32px;
+	border-bottom: 1px solid #999;
+	border-left: 1px solid #999;
+	width: 100%;
+}
+ul.tabs li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	height: 31px;
+	line-height: 31px;
+	border: 1px solid #999;
+	border-left: none;
+	margin-bottom: -1px;
+	overflow: hidden;
+	position: relative;
+	background: #0AB8F1;
+}
+ul.tabs li a {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	font-size: 1.2em;
+	padding: 0 20px;
+	border: 1px solid #fff;
+	outline: none;
+}
+ul.tabs li a:hover {
+	background: #ccc;
+}
+html ul.tabs li.active, html ul.tabs li.active a:hover  {
+	background: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+.tab_container {
+	border: 1px solid #999;
+	border-top: none;
+	/*overflow: hidden;*/
+	position: relative;
+	clear: both;
+	float: left;
+	background: #fff;
+	width: 100%;
+	min-height: 470px;
+	margin-right: 10px;
+}
+.tab_content {
+	padding: 20px;
+	font-size: 1.2em;
+}
+
+.tab_content #tab_content_left{
+	width: 70%;
+	/*height: 446px;*/
+	float:left;
+}
+.tab_content #tab_content_rigth{
+	width: 30%;
+	/*height: 446px;*/
+	float:left;
+}
+.tab_content .screen{
+	border: 1px solid #DDDDDD;
+	min-height: 150px;
+}
+.tab_content .comment{
+	border: 1px solid #DDDDDD;
+	min-height: 300px;
+}
+#screen-content{
+	font-family: Arial, Tahoma;
+    font-weight:bold;
+	font-style: normal;
+}
+.tablescreen span{
+    font-size: 16px;
+    text-align:center;
+	padding: 5px 0 0 5px;
+}
+.tablescreen p{
+    font-size: 26px;
+    text-align:center;
+	padding: 20px 0 0 0;
+}
+#screen_5 p{
+    font-size: 70px;
+	font-style: normal;
+}
+#screen_2, #screen_3, #screen_4 , #screen_5{
+	display:none;
+}
+
+#comment-content{
+	font-family: Arial, Tahoma;
+	font-style: normal;
+	text-decoration: none;
+}
+.tablecomment span{
+    font-size: 16px;
+    font-weight:bold;
+	padding: 5px 0 0 5px;
+}
+.tablecomment p{
+    font-size: 20px;
+	padding: 20px 10px 0 10px;
+}
+#comment_2, #comment_3, #comment_4 , #comment_5{
+	display:none;
+}
