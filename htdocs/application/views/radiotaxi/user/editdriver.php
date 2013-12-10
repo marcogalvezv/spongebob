@@ -168,7 +168,7 @@
                     <div class="mws-form-row">
                         <div class="mws-form-item">
                             <div id="imgContentsDriverAdmin"><?php if (isset($profile->avatar)) echo "<img src='"
-                                .$profile->avatar . "' border='0' /><br /><a href='javascript:void(0);'
+                                    .base_url(). $profile->avatar . "' border='0' /><br /><a href='javascript:void(0);'
                                 id='deleteThumbsDriverAdmin' title='" . lang('dialog.delete') . "'>(" . lang('dialog
                                 .delete')
                                 . ")</a>";?></div>
@@ -326,8 +326,8 @@
                 "href='javascript:void" +
                 "(0);' id='deleteThumbsDriverAdmin' title='<?=lang('dialog.delete')?>'>(<?=lang('dialog.delete')?>)) </a>";
         document.getElementById("imgContentsDriverAdmin").innerHTML = newinput;
-        document.getElementById("driveradmin").value = "/temp/user/" + file.name;
-        document.getElementsByName('profile[avatar]').value = "/temp/user/" + file.name;
+        document.getElementById("driveradmin").value = "temp/user/" + file.name;
+        document.getElementsByName('profile[avatar]').value = "temp/user/" + file.name;
     });
 
     document.getElementById("driveruploadfiles").onclick = function () {
@@ -336,4 +336,6 @@
     };
 
     pluploader.init();
+
+
 </script>

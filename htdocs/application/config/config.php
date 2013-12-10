@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://192.168.1.100/htdocs/';
+$config['base_url']	= 'http://10.0.0.50/htdocs/';
 
 /*
 |--------------------------------------------------------------------------

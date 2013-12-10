@@ -38,8 +38,7 @@ class Membership extends MY_Controller
 		$res = false;
 		if(	ucfirst($this->uri->segment(1)) == $user['group']['name'] || 
 			$this->uri->segment(1) == "user" ||
-			$this->uri->segment(1) == "member" || 
-			$this->uri->segment(1) == "farmacorp" || 
+			$this->uri->segment(1) == "member" ||
 			$this->uri->segment(1) == "radiotaxi" ||
 			$user['group']['name'] == "Admin") {
 			$res = TRUE;

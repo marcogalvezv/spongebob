@@ -18,88 +18,135 @@ class Client extends CI_Controller
         $this->load->model("addressmodel", "maddress");
         $this->load->model("bookingmodel", "mbooking");
         $this->load->model("taximodel", "mtaxi");
+        $this->load->model("profilemodel", "mprofile");
         $this->load->model("usermodel", "muser");
     }
 
 
     function index()
     {
+
+    }
+
+    function  request()
+    {
+
         get_layout()->enabled(false);
-        log_message("debug", "*********Data:" . print_r("androidpost", true));
-        $lat = $this->input->post('lat');
-        $lng = $this->input->post('lng');
-        $uid = $this->input->post('uid');
-        $phone = $this->input->post('mobile');
-        log_message("debug", "*********Data:" . print_r($lat, true));
+        log_message("debug", "*********method:" . print_r("request", true));
+        log_message("debug", "*********method input:" . print_r($_POST, true));
+        //ClientData
+        $clientid=$this->input->post('clientid');
+        $clientphone=$this->input->post('clientphone');
+        $clientaddresslat = $this->input->post('clientaddresslat');
+        $clientaddresslng = $this->input->post('clientaddresslng');
+        $clientaddressdescripcionn = $this->input->post('clientaddressdescripcion');
+        $bookingId= $this->input->post('bookingid');
+        if ($bookingId)
+        {
+            log_message("debug", "***** user bookingid:" . print_r(json_encode($bookingId), true));
+            $booking = $this->mbooking->getById($bookingId);
+            log_message("debug", "***** get booking data:" . print_r(json_encode($booking), true));
+            $idTaxi = $booking->idtaxi;
+            log_message("debug", "***** get taxi data idTAci:" . print_r(json_encode($idTaxi), true));
+            $taxi = $this->mtaxi->getById($idTaxi);
+            log_message("debug", "***** get taxi data:" . print_r(json_encode($taxi), true));
+            $address = $this->maddress->getById($booking->idadd);
+            log_message("debug", "***** get address data:" . print_r(json_encode($address), true));
+            $client= $this->muser->getUserWithProfile($address->uid);
+            log_message("debug", "***** get client data:" . print_r(json_encode($client), true));
+            $bookingDto['id']= $booking->id;
 
-        $address['lat'] = $lat;
-        $address['lng'] = $lng;
-        $address['phone'] = $phone;
-        $address['uid'] = $uid;
-        // $profile = $this->input->post("profile", true);
-        log_message("debug", "*****address" . print_r($address, true));
+            $bookingDto['status']= $booking->status;
+            //$bookingDto['client']= $clientDto;
+            $bookingDto['taxi']=$taxi;
+            log_message("debug", "***** bookingDto:" . print_r(json_encode($bookingDto), true));
+            header("HTTP/1.0 200 OK");
+            echo json_encode($bookingDto);
+        }else//New
+        {
+            $address['lat'] = $clientaddresslat;
+            $address['lng'] = $clientaddresslng;
+            $address['phone'] = $clientphone;
+            $address['uid'] = $clientid;
+            $address['address1'] = $clientaddressdescripcionn;
+            $address['status'] = 1;
+            $address['idcity'] = 1;
+            log_message("debug", "*****" . print_r($address, true));
 
-        $address['status'] = 1;
-        $address['idcity'] = 2;
-        //$taxi['uid'] = 2;
-        log_message("debug", "*****" . print_r($address, true));
-        //  log_message("debug","*****".print_r($profile,true));
-        //NEW
+            $id = $this->maddress->save($address);
 
-        //$addressFromDatabase = $this->maddress->getByField($address['phone'],'phone');
-        //$address['id']=$addressFromDatabase['id'];
-        log_message("debug", "*****" . print_r($address, true));
-        $id = $this->maddress->save($address);
-        $booking['idadd'] = $id;
-        $booking['status'] = 1;
-        $idb = $this->mbooking->save($booking);
-        $booking['id'] = $idb;
-        log_message("debug", "*****" . print_r(json_encode($booking), true));
-        header("HTTP/1.0 200 OK");
-        echo json_encode($booking);
-    }
+            $booking['idadd'] = $id;
+            $booking['status'] = 1;
+            $idb = $this->mbooking->save($booking);
+            $booking['id'] = $idb;
+            log_message("debug", "*****booking data:" . print_r(json_encode($booking), true));
 
-    function hash($str)
-    {
-        return sha1($str);
-    }
 
-    function extract_salt($hashed_password)
-    {
-        return substr($hashed_password, 0, self::SALT_LENGTH);
-    }
+            $client= $this->muser->getUserWithProfile($clientid);
 
-    function password_match_hash($password, $hashed_password)
-    {
-        return $hashed_password == $this->hash_password($password, $this->extract_salt($hashed_password));
-    }
+            $clientDto['id'] = $client['user']->id;
+            //log_message("debug", "*********Client dto Data:" . print_r($clientDto, true));
+            $clientDto['firstname'] = $client['profile']->firstname;
+            $clientDto['lastname'] = $client['profile']->lastname;
+            $clientDto['login'] = $client['user']->username;
+            $clientDto['password'] = $client['user']->password;
+            $clientDto['phone'] = $client['profile']->mobile;
 
-    function hash_password($password, $salt = NULL)
-    {
-        if ($salt === NULL) {
-            $salt = $this->salt();
+
+            $bookingDto['id']= $booking['id'];
+            $status = "notAssigned";
+            $bookingDto['status']= $status;
+            $bookingDto['client']= $clientDto;
+            $bookingDto['taxi']=null;
+
+
+            header("HTTP/1.0 200 OK");
+            echo json_encode($bookingDto);
         }
-        return $salt . $this->hash($salt . $password);
     }
 
+    function clientToClientDTO($client)
+    {
+        $clientDto['id'] = $client['user']->id;
+        //log_message("debug", "*********Client dto Data:" . print_r($clientDto, true));
+        $clientDto['firstname'] = $client['profile']->firstname;
+        $clientDto['lastname'] = $client['profile']->lastname;
+        $clientDto['login'] = $client['user']->username;
+        $clientDto['password'] = $client['user']->password;
+        $clientDto['phone'] = $client['profile']->mobile;
+        //log_message("debug", "*********Client dto Data:" . print_r($clientDto, true));
+        return $clientDto;
+    }
     function signin()
     {
         get_layout()->enabled(false);
-        log_message("debug", "*********Data:" . print_r("signin", true));
+        log_message("debug", "*********Method:" . print_r("signin", true));
         $login = $this->input->post('login');
         $password = $this->input->post('password');
 
-        $client = $this->muser->getByField($login, 'username');
-//        if ($client && $this->password_match_hash($password, $client->password)) {
-//            header("HTTP/1.0 200 OK");
-//            echo json_encode($client);
-//        } else {
-//            echo "false";
-//        }
+        log_message("debug", "*********Data:" . print_r($login, true));
+        log_message("debug", "*********Data:" . print_r($password, true));
 
-        if ($client)
-            echo "true";
-        //log_message("debug","*****".print_r(json_encode($booking),true));
+        $user = $this->muser->getByField($login, 'username');
+        if ($user){
+            $userId = $user->id;
+            log_message("debug", "*********Data:" . print_r($userId, true));
+            $client = $this->muser->getUserWithProfile($userId);
+            log_message("debug", "*********Data Client: " . print_r($client, true));
+            if ($client)
+            {
+                $clientDto= $this->clientToClientDTO($client);
+                log_message("debug", "*********Client dto Data:" . print_r($clientDto, true));
+                header("HTTP/1.0 200 OK");
+                echo json_encode($clientDto);
+            }
+        } else
+        {
+            $error['message']='Not a valid User';
+            header("HTTP/1.0 401 OK");
+            echo json_encode($error);
+        }
+
     }
 
     function signup()
@@ -107,15 +154,44 @@ class Client extends CI_Controller
         get_layout()->enabled(false);
         log_message("debug", "*********Data:" . print_r("signup", true));
 
-        $user['login'] = $this->input->post('login');
+        $user['username'] = $this->input->post('login');
         $user['password'] = $this->input->post('password');
-        $user['firstName'] = $this->input->post('firstName');
-        $user['lastName'] =  $this->input->post('lastName');
-        $id = $this->muser->save($user);
-        if ($id)
+        $user['status'] = 1;
+        $user['gid'] = 2;
+        $profile['firstname'] = $this->input->post('firstName');
+        $profile['lastname'] =  $this->input->post('lastName');
+        $profile['gender'] =  'male';
+        $profile['idcountry'] = 1;
+        $profile['idcity'] = 1;
+        $profile['typedoc'] = 'Carnet de Identidad';
+        $profile['document'] = '00000';
+        $profile['mobile'] = $this->input->post('phone');
+        $profile['created'] = date("Y-m-d H:i:s");
+        log_message("debug", "*********Data:" . print_r($user, true));
+        log_message("debug", "*********Data:" . print_r($profile, true));
+
+
+        $uid = $this->muser->save($user);
+        $user['id'] = $uid;
+        log_message("debug", "*********Data:" . print_r($user, true));
+        $user = $this->muser->updatepassword($user);
+
+        if($user) {
+            $profile['uid'] = $uid;
+            $activate = TRUE;
+        }
+        $pid = $this->mprofile->save($profile);
+        if ($uid)
         {
             header("HTTP/1.0 200 OK");
+
+            log_message("debug", "*********Data:" . print_r($user, true));
             echo json_encode($user);
+        }else
+        {
+            $error['message']='Not a valid Request';
+            header("HTTP/1.0 401 OK");
+            echo json_encode($error);
         }
     }
 

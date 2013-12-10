@@ -225,11 +225,12 @@
                 <li>
                     <a href="#"><i class="icon-users"></i>Usuarios</a>
                     <ul>
-                        <li><a href="#" id="id-tab-1">Reservas</a></li>
+                        <li><a href="#" id="id-tab-1">Solicitudes</a></li>
                         <li><a href="#" id="id-tab-2">Taxis</a></li>
                         <li><a href="#" id="id-tab-3">Conductores</a></li>
                         <li><a href="#" id="id-tab-4">Clientes</a></li>
-                        <li><a href="#" id="id-tab-5">Operadores</a></li>
+                        <li><a href="#" id="id-tab-5">Direcciones</a></li>
+                        <li><a href="#" id="id-tab-6">Operadores</a></li>
                     </ul>
                 </li>
                 <li>
@@ -328,7 +329,7 @@ $(function() {
     $('#id-tab-2').click(function() {
         var tviewurl2 = '<?=base_url()?>radiotaxi/taxi';
         //SET TAB STATUS ON SESSION
-        settabsession('users');
+        settabsession('taxi');
         loadtabcontentnum(tviewurl2, 2);
     });
     // LOAD TAB 3 //
@@ -342,14 +343,14 @@ $(function() {
     $('#id-tab-4').click(function() {
         var tviewurl4 = '<?=base_url()?>radiotaxi/users/viewClient';
         //SET TAB STATUS ON SESSION
-        settabsession('corporativos');
+        settabsession('clients');
         loadtabcontentnum(tviewurl4, 4);
     });
     // LOAD TAB 5 //
     $('#id-tab-5').click(function() {
-        var tviewurl5 = '<?=base_url()?>admin/users/viewCompany';
+        var tviewurl5 = '<?=base_url()?>radiotaxi/address';
         //SET TAB STATUS ON SESSION
-        settabsession('company');
+        settabsession('address');
         loadtabcontentnum(tviewurl5, 5);
     });
     // LOAD TAB 6 //

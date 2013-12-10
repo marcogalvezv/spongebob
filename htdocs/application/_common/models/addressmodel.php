@@ -118,4 +118,74 @@ protected $_table_name = "address";
 		}
 		return $res;
 	}
+
+    public function getClientAddress($limit = 10, $offset = 0, $city = "", $search = array(), $order = array())
+    {
+        $this->db->select('address.*');
+        $this->db->select('profile.uid, profile.firstname, profile.lastname, profile.gender, profile.document, profile.typedoc, profile.email, profile.company, profile.mobile, profile.avatar, profile.idcountry, profile.idcity');
+        $this->db->select('city.name');
+        $this->db->from('address');
+        $this->db->join('user','user.id = address.uid', 'left');
+        $this->db->join('profile','profile.uid = user.id', 'left');
+        $this->db->join('city','city.id = address.idcity', 'left');
+
+        //for pagination
+        if($limit > 0){
+            $this->db->limit($limit, $offset);
+        }
+
+        //echo "<pre>";
+        //print_r($search);
+        //echo "</pre>";
+
+
+
+        //filter logic by search () array
+        $this->db->where('user.gid', 2);
+
+        //default order by rating
+        //$this->db->order_by('rating', 'DESC');
+
+
+
+        //order by
+        if(!empty($order)){
+            foreach($order as $field){
+                //order by ORDER items
+                $this->db->order_by($field, "DESC");
+            }
+        }
+
+        $query = $this->db->get();
+
+        $sql = $this->db->last_query();
+
+        //echo "\n";
+        //print_r($sql);
+        //echo "\n";
+
+        $res = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+            $res = array();
+            foreach($result as $row) {
+                $row['fulladdress'] =$row['address1']." ". $row['address2'] ;
+                $row['avatar'] = base_url() . $row['avatar'];
+                $res[] = $row;
+            }
+        }
+        return $res;
+    }
+
+    function getAddressBooking($id)
+    {
+        $query = $this->db->query("select id, lat, lng, fulladdress, phone, fullname from v_addressbooking where id='".$id."'");
+        $result = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+        }
+        return $result;
+    }
 }

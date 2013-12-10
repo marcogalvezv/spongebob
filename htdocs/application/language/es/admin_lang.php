@@ -226,7 +226,7 @@ $lang['footer.advertise'] = "Publicidad";
 $lang['footer.support'] = "Soporte";
 $lang['footer.contac'] = "Cont&aacute;ctanos";
 $lang['footer.email'] = "Correo Electr&oacute;nico";
-$lang['footer.copyright'] = "&copy; 2011 Giftabroad. Todos los derechos reservados..";
+$lang['footer.copyright'] = "&copy; 2011 Giftabroad. Todos los derechos Solicituddos..";
 
 /* admin */
 $lang['admin.siteadministration'] = "Administraci&oacute;n del Sitio";

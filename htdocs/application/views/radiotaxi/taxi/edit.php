@@ -97,7 +97,7 @@
                         <div class="mws-form-row">
                             <div class="mws-form-item">
                                 <div id="imgContentsTaxiAdmin"><?php if (isset($taxi->taxiphoto)) echo "<img src='"
-                                    . $taxi->taxiphoto . "' border='0' /><br /><a href='javascript:void(0);'
+                                        .base_url(). $taxi->taxiphoto . "' border='0' /><br /><a href='javascript:void(0);'
                                 id='deleteThumbsTaxiAdmin' title='" . lang('dialog.delete') . "'>(" . lang('dialog.delete')
                                     . ")</a>";?></div>
                             </div>
@@ -216,8 +216,8 @@
         var newinput = "<img src='" + path + "temp/taxi/" + file.name + "' alt='" + file.name + "' />" + "<a href='javascript:void" +
                 "(0);' id='deleteThumbsTaxiAdmin' title='<?=lang('dialog.delete')?>'>(<?=lang('dialog.delete')?>)</a>";
         document.getElementById("imgContentsTaxiAdmin").innerHTML = newinput;
-        document.getElementById("taxiadmin").value = "/temp/taxi/" + file.name;
-        document.getElementsByName('taxi[filename]').value = "/temp/taxi/" + file.name;
+        document.getElementById("taxiadmin").value = "temp/taxi/" + file.name;
+        document.getElementsByName('taxi[taxiphoto]').value = "temp/taxi/" + file.name;
     });
 
     document.getElementById("taxiuploadfiles").onclick = function () {
@@ -260,6 +260,7 @@
         });
 
         $("#cb_drivername").change(function () {
+            $("#cb_driveravatar").val(this.value);
             var path = "<?=base_url()?>";
             var newinput = "<img src='" + path + $("#cb_driveravatar option:selected").text() + "' alt='" + $("#cb_driveravatar option:selected").text()
                     + "' />";
@@ -309,6 +310,11 @@
 
                     $('#successmsg').text(data.message);
                     $('#successbox').show();
+
+                    var tviewurl2 = '<?=base_url()?>radiotaxi/taxi';
+                    //SET TAB STATUS ON SESSION
+                    settabsession('taxi');
+                    loadtabcontentnum(tviewurl2, 2);
                 } else {
                     $('#errormsg').text(data.message);
                     $('#errordiv').show();

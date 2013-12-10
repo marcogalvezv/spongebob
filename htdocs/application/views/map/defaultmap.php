@@ -1,6 +1,6 @@
 <style>
-   #map-canvas {
-       background: #000066;
+    #map-canvas {
+        background: #000066;
         margin: 0;
         padding: 0;
         height: 800px;
@@ -15,10 +15,10 @@
     </div>
     <div id="map-canvas"></div>
 </div>
-    <div class="mws-panel grid_8">
+<div class="mws-panel grid_8">
     <form name="admin_members_form" id="admin_members_form" method="post" class="mws-form">
         <div class="mws-panel-header">
-            <span><i class="icon-table"></i> Reservas</span>
+            <span><i class="icon-table"></i>Solicitudes</span>
         </div>
         <div class="mws-panel-body no-padding">
             <table class="mws-table" id="v_bookingtable">
@@ -28,7 +28,7 @@
                     <th "width: 5%">ID</th>
                     <th "width: 15%">NOMBRE</th>
                     <th "width: 15%">DIRECCION</th>
-                    <th "width: 10%">DESTINO</th>
+                    <th "width: 10%">ESTADO</th>
                     <th "width: 10%">TAXI</th>
                     <th "width: 10%">OPCIONES</th>
 
@@ -44,15 +44,17 @@
         </div>
         <footer style="height:40px">
             <div class="mws-button-row">
-                <input onclick="v_userprofile_editclient()" value="<?= lang('users.tab.add');?>" type="button" class="btn"/>
-                <input onclick="blockusers()" value="<?= lang('users.tab.block');?>" type="button" class="btn"/>
-                <input onclick="approveusers()" value="<?= lang('users.tab.approve');?>" type="button" class="btn"/>
+                <input onclick="v_booking_edit()" value="Nueva Solicitud" type="button" class="btn"/>
+
             </div>
         </footer>
     </form>
 </div>
 
 <script>
+
+    var clientMarkersArray = new Array();
+    var taxiMarkersArray = new Array();
 
     $(document).ready(function(){
         oAdminTableUsers = $('#v_bookingtable').dataTable({
@@ -65,8 +67,8 @@
                 { 'sName': 'selected'},
                 { 'sName': 'fullname'},
                 { 'sName': 'fulladdress' },
-                { 'sName': 'fulldestination' },
-                { 'sName': 'idtaxi' },
+                { 'sName': 'status' },
+                { 'sName': 'number' },
                 { 'sName': 'id',"bSortable": false, 'bSearchable': false }
             ],
             'fnServerData': function(sSource, aoData, fnCallback){
@@ -96,62 +98,96 @@
             }
 
         });
-        getLocations();
+
+        var defaultMap = initializeMap();
+        clientMarkersArray = drawActiveClientMarkers(defaultMap);
+        console.log('obtained array');
+        console.log(clientMarkersArray);
+        taxiMarkersArray = drawActiveTaxiMarkers(defaultMap);
+        //reloadMarkers(defaultMap);
+
     });
 
-function getLocations()
-{
-    var locations;
-    $.getJSON('<?= base_url()?>radiotaxi/booking/getFirtsFiveAdress', function(data) {
-
-
-        initialize(data);
-    });
-}
-    var map
-    function initialize(data) {
-        var locations = data
-        var myLatlng = new google.maps.LatLng(-17.3830370000,-66.1453570000);
-        var mapOptions = {
-            zoom: 7,
-            center: myLatlng,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        map = new google.maps.Map(document.getElementById('map-canvas'),
-                mapOptions);
-        var iconBase = '<?= base_url();?>images/admin/mapicons/';
-        for (i = 0; i < locations.length; i++) {
-            //alert ('lat'+locations[i]['addlat']+ ',lng'+ locations[i]['addlng']);
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(locations[i]['addlat'], locations[i]['addlng']),
-                map: map,
-                icon: iconBase + 'taxiMapIcon@2x.png'
-            });
-            var origin = new google.maps.LatLng(locations[i]['addlat'], locations[i]['addlng']);
-            var dest = new google.maps.LatLng(locations[i]['destlat'], locations[i]['destlng']);
-            calcRoute(origin,dest);
-        }
-    }
-
-    function calcRoute(ori,dest) {
-        var directionsDisplay = new google.maps.DirectionsRenderer();
-        directionsDisplay.setMap(map);
-        var directionsService = new google.maps.DirectionsService();
-        //var selectedMode = document.getElementById('mode').value;
-        var request = {
-            origin: ori,
-            destination: dest,
-            travelMode: google.maps.TravelMode.DRIVING
-        };
-        directionsService.route(request, function(response, status) {
-            if (status == google.maps.DirectionsStatus.OK) {
-                directionsDisplay.setDirections(response);
-            }
+    function drawActiveClientMarkers(mapToDraw)
+    {
+        $.getJSON('<?= base_url()?>radiotaxi/booking/getActiveBookingClients', function(data) {
+            var clientLocations = data;
+            clientMarkersArray =  drawMarkerList(mapToDraw, clientLocations, 'icon-dex-littleguy.png');
         });
     }
 
+    function drawActiveTaxiMarkers(mapToDraw)
+    {
+        $.getJSON('<?= base_url()?>radiotaxi/taxi/getActiveTaxis', function(data) {
+            var taxiLocations = data;
+            taxiMarkersArray = drawMarkerList(mapToDraw, taxiLocations,'taxi.png');
+        });
+    }
+    function drawMarkerList(mapToDraw, list, icon)
+    {
+        var markerArray = new Array();
+        if (list)
+        for (i = 0; i < list.length; i++) {
+            //alert ('lat'+list[i]['lat']+ ',lng'+ list[i]['lng']);
+            var iconBase = '<?= base_url();?>images/admin/mapicons/';
+            var newMarker = new google.maps.Marker({
+                position: new google.maps.LatLng(list[i]['lat'], list[i]['lng']),
+                icon: iconBase + icon,
+                draggable:true,
+                map: mapToDraw
+            });
+            markerArray.push(newMarker);
+        }
+        console.log('returned array: ');
+        console.log(markerArray);
+        return markerArray;
+    }
+
+    function initializeMap()
+    {
+        var myLatlng = new google.maps.LatLng(-17.3830370000,-66.1453570000);
+        var mapOptions = {
+            zoom: 13,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+        return map;
+    }
+
+    function reloadMarkers(mapToDraw)
+    {
+        setInterval(function(){
+            console.log('trying to clean');
+            //alert('array to clean: '. taxiMarkersArray);
+            cleanMarkers(clientMarkersArray);
+            cleanMarkers(taxiMarkersArray);
+            clientMarkersArray = drawActiveClientMarkers(mapToDraw);
+            taxiMarkersArray = drawActiveTaxiMarkers(mapToDraw);
+        },3000);
+
+    }
+
+    function cleanMarkers(markersArray)
+    {
+        console.log(markersArray);
+      if (markersArray !== undefined)
+      {
+          for (var i = 0; i < markersArray.length; i++ ) {
+              markersArray[i].setMap(null);
+          }
+        markersArray = [];
+      }
+    }
+
+    function cleanMarker(marker)
+    {
+        marker.setMap(null);
+    }
+
     function v_booking_edit(iduser){
-       //alert('trying to edit');
+        //alert('trying to edit');
         $.ajax({
             type: "post",
             url: "<?=base_url()?>radiotaxi/booking/ajaxedit",

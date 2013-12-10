@@ -122,7 +122,7 @@ Source Code must be explicitly and entirely identified in the Source Code
 files. This section of the license supersedes all modification restrictions
 imposed by other sections of it.
 
-8. Reservation of Rights and Ownership
+8. Solicitudtion of Rights and Ownership
 
 CKSource reserves all rights not expressly granted to you in this License.
 CKFinder is protected by copyright and other intellectual property laws and

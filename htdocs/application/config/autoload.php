@@ -52,7 +52,7 @@ $autoload['packages'] = array(DOMAINSPATH.'application/_common/');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('config', 'database','layout','session','fb_ignited');
+$autoload['libraries'] = array('config', 'database','layout','session');
 
 
 /*

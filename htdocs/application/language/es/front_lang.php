@@ -109,7 +109,7 @@ $lang['front.layout.footer.links.investors'] = "Inversionistas";
 $lang['front.layout.footer.links.blog'] = "Blog";
 
 $lang['front.layout.footer.copyright.images'] = "Todas las imagenes y logos pertenecen a sus propietarios";
-$lang['front.layout.footer.copyright.reserved'] = "Todos los Derechos Reservados";
+$lang['front.layout.footer.copyright.reserved'] = "Todos los Derechos Solicituddos";
 
 /* FRONT LAYOUT  WELCOME  */
 
@@ -386,8 +386,8 @@ $lang['front.page.user.profile.address.button.save'] = "Guardar";
 /* FRONT USER PASSWORD */
 
 $lang['front.page.user.profile.password.title'] = "Su Contrase&ntilde;a";
-$lang['front.page.user.profile.password.save.success'] = "Contraseña guardada exitosamente";
-$lang['front.page.user.profile.password.save.fail'] = "Hubo un error al guardar la contraseña, contacte a soporte tecnico.";
+$lang['front.page.user.profile.password.save.success'] = "Contraseï¿½a guardada exitosamente";
+$lang['front.page.user.profile.password.save.fail'] = "Hubo un error al guardar la contraseï¿½a, contacte a soporte tecnico.";
 
 $lang['front.page.user.profile.password.pass1.label'] = "Contrase&ntilde;a";
 $lang['front.page.user.profile.password.pass2.label'] = "Confirmar Contrase&ntilde;a";

@@ -1,0 +1,730 @@
+<html><head><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}</style><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}</style><link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style div,.gm-style span,.gm-style label,.gm-style a{font-family:Roboto,Arial,sans-serif;font-size:11px;font-weight:400}.gm-style div,.gm-style span,.gm-style label{text-decoration:none}.gm-style img{border:0;padding:0;margin:0}</style>
+    <meta charset="utf-8">
+
+    <!-- Viewport Metatag -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- To load the layout as library /-->
+    <title>SoliciTaxi - Solicita Taxi desde tu m�vil de forma rápida y segura</title>    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/plugins/colorpicker/colorpicker.css" media="SCREEN">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/custom-plugins/wizard/wizard.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/bootstrap.min.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/fonts/ptsans/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/fonts/icomoon/style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/mws-style.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/icons/icol16.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/icons/icol32.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/demo.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/jui/jquery.ui.all.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/jui/jquery-ui.custom.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/mws-theme.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/themer.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="http://10.0.0.50/htdocs/css/admin/jquery.toastmessage.css" media="">
+    <meta name="robots" content="INDEX, FOLLOW">
+    <meta name="keywords" content="solicita, taxi, solicitaxi, pedidos de taxi, booking, taxi, seguridad, rapidez, transporte seguro, domicilio">
+    <meta name="description" content="SoliciTaxi - Solicita Taxi desde tu m�vil de forma rápida y segura">
+    <meta http-equiv="robots" content="INDEX, FOLLOW">
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/jquery/jquery-1.8.0.min.js" style=""></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/jquery.toastmessage.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/libs/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/libs/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/custom-plugins/fileinput.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/jui/jquery-ui-1.9.2.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/jui/jquery-ui.custom.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/jui/jquery.ui.touch-punch.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/validate/jquery.validate-min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/flot/plugins/jquery.flot.tooltip.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/flot/plugins/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/flot/plugins/jquery.flot.stack.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/flot/plugins/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/colorpicker/colorpicker-min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/plugins/validate/jquery.validate-min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/custom-plugins/wizard/wizard.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/core/mws.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/core/themer.js"></script>
+    <script type="text/javascript" src="http://10.0.0.50/htdocs/js/admin/demo/demo.dashboard.js"></script>
+
+    <script type="text/javascript">base_url = 'http://10.0.0.50/htdocs/';</script>
+
+
+    <script type="text/javascript" charset="UTF-8" src="https://maps.gstatic.com/cat_js/intl/es_ALL/mapfiles/api-3/15/4/%7Bcommon,map%7D.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.gstatic.com/cat_js/intl/es_ALL/mapfiles/api-3/15/4/%7Butil,onion%7D.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.gstatic.com/cat_js/intl/es_ALL/mapfiles/api-3/15/4/%7Bcontrols,stats%7D.js"></script><script type="text/javascript" charset="UTF-8" src="https://maps.gstatic.com/cat_js/intl/es_ALL/mapfiles/api-3/15/4/%7Bmarker%7D.js"></script></head>
+<body style="">
+<!-- Header Start -->
+<header>
+
+</header>
+<!-- Header End -->
+<div id="maincontainer">
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script><script src="https://maps.gstatic.com/intl/es_ALL/mapfiles/api-3/15/4/main.js" type="text/javascript"></script>
+<!-- Themer (Remove if not needed) -->
+<div id="mws-themer">
+    <div id="mws-themer-content">
+        <div id="mws-themer-ribbon"></div>
+        <div id="mws-themer-toggle">
+            <i class="icon-bended-arrow-left"></i>
+            <i class="icon-bended-arrow-right"></i>
+        </div>
+        <div id="mws-theme-presets-container" class="mws-themer-section">
+            <label for="mws-theme-presets">Color Presets</label>
+            <select id="mws-theme-presets"><option value="0">Default</option><option value="1">Army</option><option value="2">Rocky Mountains</option><option value="3">Chinese Temple</option><option value="4">Boutique</option><option value="5">Toxic</option><option value="6">Aquamarine</option></select></div>
+        <div class="mws-themer-separator"></div>
+        <div id="mws-theme-pattern-container" class="mws-themer-section">
+            <label for="mws-theme-patterns">Background</label>
+            <select id="mws-theme-patterns"><option value="0">Paper</option><option value="1">Blueprint</option><option value="2">Bricks</option><option value="3">Carbon</option><option value="4">Circuit</option><option value="5">Holes</option><option value="6">Mozaic</option><option value="7">Roof</option><option value="8">Stripes</option><option value="9">Arches</option><option value="10">Bright Squares</option><option value="11">Brushed Alu</option><option value="12">Circles</option><option value="13">Climpek</option><option value="14">Connect</option><option value="15">Corrugation</option><option value="16">Cubes</option><option value="17">Diagonal Noise</option><option value="18">Diagonal Striped Brick</option><option value="19">Diamonds</option><option value="20">Diamond Upholstery</option><option value="21">Escheresque</option><option value="22">Fabric Plaid</option><option value="23">Furley</option><option value="24">Gplaypattern</option><option value="25">Gradient Squares</option><option value="26">Grey</option><option value="27">Grilled</option><option value="28">Hexellence</option><option value="29">Lghtmesh</option><option value="30">Light Alu</option><option value="31">Light Checkered Tiles</option><option value="32">Light Honeycomb</option><option value="33">Littleknobs</option><option value="34">Nistri</option><option value="35">Noise Lines</option><option value="36">Noise Pattern</option><option value="37">Noisy Grid</option><option value="38">Norwegian Rose</option><option value="39">Pineapplecut</option><option value="40">Pinstripe</option><option value="41">Project Papper</option><option value="42">Ravenna</option><option value="43">Reticular Tissue</option><option value="44">Rockywall</option><option value="45">Roughcloth</option><option value="46">Shattered</option><option value="47">Silver Scales</option><option value="48">Skelatal Weave</option><option value="49">Small Crackle Bright</option><option value="50">Small Tiles</option><option value="51">Square</option><option value="52">Struckaxiom</option><option value="53">Subtle Stripes</option><option value="54">Vichy</option><option value="55">Washi</option><option value="56">Wavecut</option><option value="57">Weave</option><option value="58">Whitey</option><option value="59">White Brick Wall</option><option value="60">White Tiles</option><option value="61">Worn Dots</option></select></div>
+        <div class="mws-themer-separator"></div>
+        <div class="mws-themer-section">
+            <ul>
+                <li class="clearfix"><span>Base Color</span> <div id="mws-base-cp" class="mws-cp-trigger"></div></li>
+                <li class="clearfix"><span>Highlight Color</span> <div id="mws-highlight-cp" class="mws-cp-trigger"></div></li>
+                <li class="clearfix"><span>Text Color</span> <div id="mws-text-cp" class="mws-cp-trigger"></div></li>
+                <li class="clearfix"><span>Text Glow Color</span> <div id="mws-textglow-cp" class="mws-cp-trigger"></div></li>
+                <li class="clearfix"><span>Text Glow Opacity</span> <div id="mws-textglow-op" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"><div class="ui-slider-range ui-widget-header ui-slider-range-min" style="width: 50%;"></div><a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 50%;"></a><span class="ui-slider-handle-tooltip ui-state-default" style="display: none; margin-left: -13px; left: 50%;">50</span></div></li>
+            </ul>
+        </div>
+        <div class="mws-themer-separator"></div>
+        <div class="mws-themer-section">
+            <button class="btn btn-danger small" id="mws-themer-getcss">Get CSS</button>
+        </div>
+    </div>
+
+</div>
+<!-- Themer End -->
+
+<!-- Header -->
+<div id="mws-header" class="clearfix">
+
+    <!-- Logo Container -->
+    <div id="mws-logo-container">
+
+        <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
+        <div id="mws-logo-wrap">
+            <img src="http://10.0.0.50/htdocs/images/admin/mws-logo.png" alt="mws admin">
+        </div>
+    </div>
+
+    <!-- User Tools (notifications, logout, profile, change password) -->
+    <div id="mws-user-tools" class="clearfix">
+
+        <!-- Notifications -->
+        <div id="mws-user-notif" class="mws-dropdown-menu">
+            <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-exclamation-sign"></i></a>
+
+            <!-- Unread notification count -->
+            <span class="mws-dropdown-notif">35</span>
+
+            <!-- Notifications dropdown -->
+            <div class="mws-dropdown-box">
+                <div class="mws-dropdown-content">
+                    <ul class="mws-notifications">
+                        <li class="read">
+                            <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="read">
+                            <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="unread">
+                            <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="unread">
+                            <a href="#">
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mws-dropdown-viewall">
+                        <a href="#">View All Notifications</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Messages -->
+        <div id="mws-user-message" class="mws-dropdown-menu">
+            <a href="#" data-toggle="dropdown" class="mws-dropdown-trigger"><i class="icon-envelope"></i></a>
+
+            <!-- Unred messages count -->
+            <span class="mws-dropdown-notif">35</span>
+
+            <!-- Messages dropdown -->
+            <div class="mws-dropdown-box">
+                <div class="mws-dropdown-content">
+                    <ul class="mws-messages">
+                        <li class="read">
+                            <a href="#">
+                                <span class="sender">John Doe</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="read">
+                            <a href="#">
+                                <span class="sender">John Doe</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="unread">
+                            <a href="#">
+                                <span class="sender">John Doe</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                        <li class="unread">
+                            <a href="#">
+                                <span class="sender">John Doe</span>
+                                    <span class="message">
+                                        Lorem ipsum dolor sit amet
+                                    </span>
+                                    <span class="time">
+                                        January 21, 2012
+                                    </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="mws-dropdown-viewall">
+                        <a href="#">View All Messages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Information and functions section -->
+        <div id="mws-user-info" class="mws-inset">
+
+            <!-- User Photo -->
+            <div id="mws-user-photo">
+                <img src="example/profile.jpg" alt="User Photo">
+            </div>
+
+            <!-- Username and Functions -->
+            <div id="mws-user-functions">
+                <div id="mws-username">
+                    Hola, jardin                </div>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Change Password</a></li>
+                    <li><a href="http://10.0.0.50/htdocs/admin/user/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Start Main Wrapper -->
+<div id="mws-wrapper">
+
+    <!-- Necessary markup, do not remove -->
+    <div id="mws-sidebar-stitch"></div>
+    <div id="mws-sidebar-bg"></div>
+
+    <!-- Sidebar Wrapper -->
+    <div id="mws-sidebar">
+
+        <!-- Hidden Nav Collapse Button -->
+        <div id="mws-nav-collapse">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Main Navigation -->
+        <div id="mws-navigation">
+            <ul>
+
+                <li>
+                    <a href="#"><i class="icon-users"></i>Usuarios</a>
+                    <ul>
+                        <li><a href="#" id="id-tab-1">Solicitudes</a></li>
+                        <li><a href="#" id="id-tab-2">Taxis</a></li>
+                        <li><a href="#" id="id-tab-3">Conductores</a></li>
+                        <li><a href="#" id="id-tab-4">Clientes</a></li>
+                        <li><a href="#" id="id-tab-5">Direcciones</a></li>
+                        <li><a href="#" id="id-tab-6">Operadores</a></li>
+                    </ul>
+                </li>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main Container Start -->
+    <div id="mws-container" class="clearfix">
+
+        <!-- Inner Container Start -->
+        <div class="container" id="tabcontent" style="display: block;"><style>
+            #map-canvas {
+                background: #000066;
+                margin: 0;
+                padding: 0;
+                height: 500px;
+                width: 500px;
+            }
+        </style>
+            <article class="module width_full">
+                <header><h3>Editar Solicitud</h3></header>
+                <div class="mws-panel grid_8 mws-collapsible">
+                    <div class="mws-panel-header">
+                        <span><i class="icon-ok"></i>Solicitud </span>
+                    </div>
+                    <div class="mws-panel-inner-wrap">
+                        <div class="mws-panel-body no-padding">
+                            <form id="booking-form" class="mws-form" action="form_elements.html">
+                                <div id="mws-validate-error" class="mws-form-message error" style="display:none;"></div>
+                                <fieldset class="mws-form-inline">
+                                    <legend>Cliente</legend>
+                                    <div class="mws-form-cols">
+                                        <div class="mws-form-col-4-8">
+                                            <div class="mws-form-row">
+                                                <label class="mws-form-label">Telefono</label>
+                                                <div class="mws-form-item">
+                                                    <div class="mws-form-item">
+                                                        <input type="text" name="address[phone]" class="required small" id="txt_phone" title="Campo Requerido" value="79733312" required="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mws-form-row">
+                                                <label class="mws-form-label">Nombre</label>
+                                                <div class="mws-form-item">
+                                                    <input type="text" name="profileclient[firstname]" class="required small" id="txt_firstname" title="Campo Requerido" value="Carlos Alcala" required="">
+                                                </div>
+                                            </div>
+                                            <div class="mws-form-row">
+                                                <label class="mws-form-label">Latitud</label>
+                                                <div class="mws-form-item">
+                                                    <input type="text" name="address[lat]" class="required small" id="txt_latitude" title="Campo Requerido" value="-17.383037" required="">
+                                                </div>
+                                            </div>
+                                            <div class="mws-form-row">
+                                                <label class="mws-form-label">Longitud</label>
+                                                <div class="mws-form-item">
+                                                    <input type="text" name="address[lng]" class="required small" id="txt_longitude" title="Campo Requerido" value="-66.145357" required="">
+                                                </div>
+                                            </div>
+                                            <div class="mws-form-row">
+                                                <label class="mws-form-label">Descripcion</label>
+                                                <div class="mws-form-item">
+                                                    <textarea rows="" cols="" class="small" id="txtDescription">Avenida Aniceto Arce #0666</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mws-form-col-4-8">
+
+                                            <div class="mws-form-row">
+                                                <div id="map-canvas"></div>
+                                            </div>
+                                        </div>
+                                    </div></fieldset>
+                                <fieldset class="mws-form-inline">
+                                    <legend>Taxi</legend>
+                                    <div class="mws-form-row">
+                                        <div class="mws-form-cols">
+                                            <div class="mws-form-col-4-8">
+                                                <div class="mws-form-row">
+                                                    <label class="mws-form-label">Numero de Movil</label>
+                                                    <div class="mws-form-item">
+                                                        <select class="required small" name="taxi[id]" id="cb_taxi" title="Campo Requerido">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="mws-form-row">
+                                                    <label class="mws-form-label">Placa</label>
+                                                    <div class="mws-form-item">
+                                                        <input type="text" name="taxi[plate]" class="required small" id="txt_taxiplate" title="Campo Requerido" value="" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="mws-form-row">
+                                                    <label class="mws-form-label">Color</label>
+                                                    <div class="mws-form-item">
+                                                        <input type="text" name="taxi[taxicolor]" class="required small" id="txt_taxicolor" title="Campo Requerido" value="" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="mws-form-row">
+                                                    <label class="mws-form-label">Nombre Conductor</label>
+                                                    <div class="mws-form-item">
+                                                        <input type="text" name="profiledriver[name]" class="required small" id="txt_drivername" title="Campo Requerido" value="" required="">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="mws-form-col-4-8">
+                                                <div class="mws-form-row">
+                                                    <span class="thumbnail"><img src="" alt="" id="sp_taxiphoto"></span>
+                                                </div>
+                                                <div class="mws-form-row">
+                                                    <span class="thumbnail"><img src="" alt="" id="sp_driveravatar"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label">Estado de la Reserva</label>
+                                    <div class="mws-form-item">
+                                        <select name="booking[status]" class="required small" id="cb_status" title="Campo Requerido">
+                                            <option value="1">Sin asignar</option>
+                                            <option value="2">Taxi Asignado</option>
+                                            <option value="3">Esperando pasajero</option>
+                                            <option value="4">En Progreso</option>
+                                            <option value="5" selected="selected">Terminada</option>
+                                            <option value="6">Cancelada</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mws-button-row">
+                                    <input type="hidden" name="booking[id]" value="1">
+                                    <input type="hidden" name="address[id]" value="1">
+                                    <input class="btn btn-danger" value="Guardar" type="button" onclick="save()">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+
+
+
+
+        </div>
+    </div>
+
+
+    <!-- Panels End -->
+</div>
+<!-- Inner Container End -->
+
+<!-- Footer -->
+<!--<div id="mws-footer">-->
+<!--    Copyright Your Website 2012. All Rights Reserved.-->
+<!--</div>-->
+
+</div>
+<!-- Main Container End -->
+
+
+
+
+
+<script type="text/javascript">
+
+//GENERIC CONTENT TAB LOADER BY TAB NUMBER
+function loadtabcontentnum(loadurl, num) {
+    $('#ajaxLoadAni').fadeIn( 'slow' );
+    $('#tabcontent').fadeOut('slow');
+    $('#tabcontent').load(loadurl, function(){
+        $('#ajaxLoadAni').fadeOut('slow');
+        $('#tabcontent').fadeIn('slow');
+    });
+};
+
+function loadtabcontent(loadurl) {
+    $('#ajaxLoadAni').fadeIn( 'slow' );
+    $('#tabcontent').fadeOut('slow');
+
+    $('#tabcontent').load(loadurl, function(){
+        $('#ajaxLoadAni').fadeOut('slow');
+        $('#tabcontent').fadeIn('slow');
+    });
+};
+
+//SELECTED TAB IN SESSION
+function settabsession(tab){
+    $.ajax({
+        type: "get",
+        url: "http://10.0.0.50/htdocs/admin/dashboard/ajaxtabs/"+tab ,
+        async : false,
+        success: function(data) {
+        }
+    });
+};
+
+$(function() {
+    // LOAD TAB 1 //
+    $('#id-tab-1').click(function() {
+        var tviewurl1 = 'http://10.0.0.50/htdocs/admin/defaultmap';
+        //SET TAB STATUS ON SESSION
+        settabsession('home');
+        loadtabcontentnum(tviewurl1, 1);
+    });
+    // LOAD TAB 2 //
+    $('#id-tab-2').click(function() {
+        var tviewurl2 = 'http://10.0.0.50/htdocs/radiotaxi/taxi';
+        //SET TAB STATUS ON SESSION
+        settabsession('taxi');
+        loadtabcontentnum(tviewurl2, 2);
+    });
+    // LOAD TAB 3 //
+    $('#id-tab-3').click(function() {
+        var tviewurl3 = 'http://10.0.0.50/htdocs/radiotaxi/users/viewDriver';
+        //SET TAB STATUS ON SESSION
+        settabsession('drivers');
+        loadtabcontentnum(tviewurl3, 3);
+    });
+    // LOAD TAB 4 //
+    $('#id-tab-4').click(function() {
+        var tviewurl4 = 'http://10.0.0.50/htdocs/radiotaxi/users/viewClient';
+        //SET TAB STATUS ON SESSION
+        settabsession('clients');
+        loadtabcontentnum(tviewurl4, 4);
+    });
+    // LOAD TAB 5 //
+    $('#id-tab-5').click(function() {
+        var tviewurl5 = 'http://10.0.0.50/htdocs/radiotaxi/address';
+        //SET TAB STATUS ON SESSION
+        settabsession('address');
+        loadtabcontentnum(tviewurl5, 5);
+    });
+    // LOAD TAB 6 //
+    $('#id-tab-6').click(function() {
+//		var tviewurl6 = 'http://10.0.0.50/htdocs/admin/admin/ajaxsecurity';
+        //SET TAB STATUS ON SESSION
+        settabsession('security');
+//		loadtabcontentnum(tviewurl5, 5);
+        security_view('1');/*user_id*/
+    });
+    // LOAD TAB 7 //
+    $('#id-tab-7').click(function() {
+        var tviewurl7 = 'http://10.0.0.50/htdocs/admin/manage';
+        //SET TAB STATUS ON SESSION
+        settabsession('manage');
+        loadtabcontentnum(tviewurl7, 7);
+    });
+    // LOAD TAB 8 //
+    $('#id-tab-8').click(function() {
+        var tviewurl8 = 'http://10.0.0.50/htdocs/admin/type';
+        //SET TAB STATUS ON SESSION
+        settabsession('type');
+        loadtabcontentnum(tviewurl8, 8);
+    });
+    // LOAD TAB 9//
+    $('#id-tab-9').click(function() {
+        var tviewurl9 = 'http://10.0.0.50/htdocs/admin/commission';
+        //SET TAB STATUS ON SESSION
+        settabsession('commission');
+        loadtabcontentnum(tviewurl9, 9);
+    });
+    // LOAD TAB 11//
+    $('#id-tab-11').click(function() {
+        var tviewurl11 = 'http://10.0.0.50/htdocs/admin/prize';
+        //SET TAB STATUS ON SESSION
+        settabsession('prize');
+        loadtabcontentnum(tviewurl11, 11);
+    });
+    $('#id-tab-17').click(function() {
+        var tviewurl17 = 'http://10.0.0.50/htdocs/admin/defaultmap';
+        //SET TAB STATUS ON SESSION
+        settabsession('map');
+        loadtabcontentnum(tviewurl17, 17);
+    });
+
+    $('#id-tab-1').click();
+});
+
+/*
+ ***************************************
+ * v_userprofile users functions
+ ***************************************
+ */
+
+//EDIT
+function v_userprofile_edit(iduser){
+    $.ajax({
+        type: "post",
+        url: "http://10.0.0.50/htdocs/admin/users/ajaxedit",
+        dataType: "html",
+        data: { 'id' : iduser, 'rnd': new Date().getTime() },
+        async: false,
+        success: function(data) {
+            //$('#ajaxLoadAni').fadeOut('slow');
+            $("#tabcontent").html(data);
+        }
+    });
+};
+
+function v_userprofile_editdriver(iduser){
+    $.ajax({
+        type: "post",
+        url: "http://10.0.0.50/htdocs/radiotaxi/users/ajaxeditdriver",
+        dataType: "html",
+        data: { 'id' : iduser, 'rnd': new Date().getTime() },
+        async: false,
+        success: function(data) {
+            //$('#ajaxLoadAni').fadeOut('slow');
+            $("#tabcontent").html(data);
+        }
+    });
+};
+
+function v_userprofile_editclient(iduser){
+    $.ajax({
+        type: "post",
+        url: "http://10.0.0.50/htdocs/radiotaxi/users/ajaxeditclient",
+        dataType: "html",
+        data: { 'id' : iduser, 'rnd': new Date().getTime() },
+        async: false,
+        success: function(data) {
+            //$('#ajaxLoadAni').fadeOut('slow');
+            $("#tabcontent").html(data);
+        }
+    });
+};
+
+//PROFILE
+function v_userprofile_view(iduser){
+//		loadtabcontent("http://10.0.0.50/htdocs/admin/users/ajaxedit");
+    $.ajax({
+        type: "post",
+        url: "http://10.0.0.50/htdocs/admin/users/ajaxprofile",
+        dataType: "html",
+        data: { 'id' : iduser, 'rnd': new Date().getTime() },
+        async: false,
+        success: function(data) {
+            //$('#ajaxLoadAni').fadeOut('slow');
+            $("#tabcontent").html(data);
+        }
+    });
+};
+
+function v_userprofile_block(id)
+{
+    //$( "#dialog_confirm_user" ).dialog( "destroy" );
+
+    $( "#dialog_confirm_userblock" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Bloquear": function() {
+                $( this ).dialog( "close" );
+
+                $.ajax({
+                    type: "post",
+                    url: "http://10.0.0.50/htdocs/admin/users/ajaxblock" ,
+                    dataType: "json",
+                    data: { id: id, rnd: new Date().getTime() },
+                    success: function(data) {
+                        $().toastmessage('showToast', {
+                            text     : 'Bloqueado',
+                            no_sticky   : true,
+                            position : 'middle-center',
+                            type     : 'success',
+                            closeText: ''
+                        });
+                        oAdminTableUsers.fnDraw();
+                    }
+                });
+
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+
+};
+
+function v_userprofile_unblock(id)
+{
+    $( "#dialog_confirm_userapprove" ).dialog({
+        resizable: false,
+        height:180,
+        modal: true,
+        buttons: {
+            "Aprovar": function() {
+                $( this ).dialog( "close" );
+
+                $.ajax({
+                    type: "post",
+                    url: "http://10.0.0.50/htdocs/admin/users/ajaxunblock" ,
+                    dataType: "json",
+                    data: { id: id, rnd: new Date().getTime() },
+                    success: function(data) {
+                        $().toastmessage('showToast', {
+                            text     : 'Aprovado',
+                            no_sticky   : true,
+                            position : 'middle-center',
+                            type     : 'success',
+                            closeText: ''
+                        });
+                        oAdminTableUsers.fnDraw();
+                    }
+                });
+
+            },
+            Cancel: function() {
+                $( this ).dialog( "close" );
+            }
+        }
+    });
+
+};
+
+</script>
+
+
+<!-- Footer -->
+<footer id="footer">
+</footer>
+<!-- /maincontainer -->
+<!-- javascript
+    ================================================== -->
+
+
+
+
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable ui-resizable ui-dialog-buttons" tabindex="-1" style="display: none; outline: 0px; z-index: 1000; position: absolute;" role="dialog" aria-labelledby="ui-id-1"><div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix"><span id="ui-id-1" class="ui-dialog-title">Theme CSS</span><a href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button"><span class="ui-icon ui-icon-closethick">close</span></a></div><div id="mws-themer-css-dialog" class="ui-dialog-content ui-widget-content" style="display: block;">
+    <form class="mws-form">
+        <div class="mws-form-row">
+            <div class="mws-form-item">
+                <textarea cols="auto" rows="auto" readonly="readonly"></textarea>
+            </div>
+        </div>
+    </form>
+</div><div class="ui-resizable-handle ui-resizable-n" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-e" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-w" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se ui-icon-grip-diagonal-se" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-sw" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-ne" style="z-index: 1000;"></div><div class="ui-resizable-handle ui-resizable-nw" style="z-index: 1000;"></div><div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix"><div class="ui-dialog-buttonset"><button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"><span class="ui-button-text">Close</span></button></div></div></div><div class="colorpicker" id="collorpicker_489"><div class="colorpicker_color" style="background-color: rgb(0, 0, 255);"><div><div style="left: 12px; top: 115px;"></div></div></div><div class="colorpicker_hue"><div style="top: 50px;"></div></div><div class="colorpicker_new_color" style="background-color: rgb(53, 53, 58);"></div><div class="colorpicker_current_color" style="background-color: rgb(53, 53, 58);"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6"></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_submit"></div></div><div class="colorpicker" id="collorpicker_546"><div class="colorpicker_color" style="background-color: rgb(230, 255, 0);"><div><div style="left: 119px; top: 24px;"></div></div></div><div class="colorpicker_hue"><div style="top: 122px;"></div></div><div class="colorpicker_new_color" style="background-color: rgb(196, 213, 43);"></div><div class="colorpicker_current_color" style="background-color: rgb(196, 213, 43);"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6"></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_submit"></div></div><div class="colorpicker" id="collorpicker_846"><div class="colorpicker_color" style="background-color: rgb(230, 255, 0);"><div><div style="left: 119px; top: 24px;"></div></div></div><div class="colorpicker_hue"><div style="top: 122px;"></div></div><div class="colorpicker_new_color" style="background-color: rgb(196, 213, 43);"></div><div class="colorpicker_current_color" style="background-color: rgb(196, 213, 43);"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6"></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_submit"></div></div><div class="colorpicker" id="collorpicker_359"><div class="colorpicker_color" style="background-color: rgb(230, 255, 0);"><div><div style="left: 120px; top: 24px;"></div></div></div><div class="colorpicker_hue"><div style="top: 122px;"></div></div><div class="colorpicker_new_color" style="background-color: rgb(196, 213, 42);"></div><div class="colorpicker_current_color" style="background-color: rgb(196, 213, 42);"></div><div class="colorpicker_hex"><input type="text" maxlength="6" size="6"></div><div class="colorpicker_rgb_r colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_g colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_rgb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_h colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_s colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_hsb_b colorpicker_field"><input type="text" maxlength="3" size="3"><span></span></div><div class="colorpicker_submit"></div></div><div id="flotTip" style="display: none; position: absolute; background-color: rgb(255, 255, 255); z-index: 100; padding: 0.4em 0.6em; border-top-left-radius: 0.5em; border-top-right-radius: 0.5em; border-bottom-right-radius: 0.5em; border-bottom-left-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); background-position: initial initial; background-repeat: initial initial;"></div><div id="window-resizer-tooltip"><a href="#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span></div></body></html>
