@@ -1,6 +1,6 @@
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
+SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'TRADITIONAL';
 
 /*
 *****************************
@@ -13,67 +13,166 @@ CREATE VIEWS
 -- -----------------------------------------------------
 
 CREATE OR REPLACE VIEW v_userprofile AS
-SELECT u.id as selected, p.id, p.uid, CONCAT(p.firstname, ' ', p.lastname) as name, p.email, c.name as country, p.company,
-(CASE WHEN u.activation_code = "" THEN 'Yes' WHEN u.activation_code IS NULL THEN 'Yes' ELSE 'No' END) as activated,
-(CASE WHEN u.status = 1 THEN 'Approved' WHEN u.status = 0 THEN 'Blocked' END) as status,
-p.created as signupdate,
-u.gid as gid
-FROM profile p
-LEFT JOIN country c ON p.idcountry = c.id
-LEFT JOIN user u ON u.id = p.uid
-WHERE p.uid != 1
-GROUP BY p.uid
-ORDER BY p.id;
+  SELECT
+    u.id                                   AS selected,
+    p.id,
+    p.uid,
+    CONCAT(p.firstname, ' ', p.lastname)   AS name,
+    p.email,
+    c.name                                 AS country,
+    p.company,
+    (CASE WHEN u.activation_code = "" THEN 'Yes'
+     WHEN u.activation_code IS NULL THEN 'Yes'
+     ELSE 'No' END)                        AS activated,
+    (CASE WHEN u.status = 1 THEN 'Approved'
+     WHEN u.status = 0 THEN 'Blocked' END) AS status,
+    p.created                              AS signupdate,
+    u.gid                                  AS gid
+  FROM profile p
+    LEFT JOIN country c
+      ON p.idcountry = c.id
+    LEFT JOIN user u
+      ON u.id = p.uid
+  WHERE p.uid != 1
+  GROUP BY p.uid
+  ORDER BY p.id;
 
 -- -----------------------------------------------------
 -- View `v_company`
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW v_company AS
-SELECT c.id as selected, c.id, c.uid, c.name, c.uri, c.desc, c.slogan, c.rating, c.logo, c.numtaxis, c.lat, c.lng, c.email,
-(CASE WHEN c.status = 1 THEN 'Approved' WHEN c.status = 0 THEN 'Blocked' END) as status
-FROM company c;
+  SELECT
+    c.id                                   AS selected,
+    c.id,
+    c.uid,
+    c.name,
+    c.uri,
+    c.desc,
+    c.slogan,
+    c.rating,
+    c.logo,
+    c.numtaxis,
+    c.lat,
+    c.lng,
+    c.email,
+    (CASE WHEN c.status = 1 THEN 'Approved'
+     WHEN c.status = 0 THEN 'Blocked' END) AS status
+  FROM company c;
 
 -- -----------------------------------------------------
 -- View `v_booking`
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW v_booking AS
-SELECT b.id as selected,b.*,
-CONCAT(a.address1,' ',a.address2) AS fulladdress, a.lat AS addlat, a.lng AS addlng,
-CONCAT(p.lastname,' ',p.firstname) AS fullname,
-CONCAT(d.address1,' ',d.address2) AS fulldestination, d.lat AS destlat, d.lng AS destlng
-FROM `booking` b
-JOIN `address` a ON b.idadd = a.id
-JOIN `profile` p ON a.uid = p.uid
-LEFT JOIN `destination` d ON b.iddest = d.id;
+  SELECT
+    b.id                                 AS selected,
+    b.*,
+    CONCAT(a.address1, ' ', a.address2)  AS fulladdress,
+    a.lat                                AS addlat,
+    a.lng                                AS addlng,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname,
+    CONCAT(d.address1, ' ', d.address2)  AS fulldestination,
+    d.lat                                AS destlat,
+    d.lng                                AS destlng,
+    t.`number`                           AS `number`
+  FROM `booking` b
+    JOIN `address` a
+      ON b.idadd = a.id
+    JOIN `profile` p
+      ON a.uid = p.uid
+    LEFT JOIN `destination` d
+      ON b.iddest = d.id
+    LEFT JOIN `taxi` `t`
+      ON `b`.`idtaxi` = `t`.`id`;
 
 -- -----------------------------------------------------
--- View `v_badge`
+-- View `v_taxi`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge AS
--- SELECT b.id, b.cod, b.name, b.message, b.question, b.filename, b.status, COUNT(be.id) AS badge_earned
--- FROM `badge` b
--- LEFT JOIN `badge_earned` be ON b.id = be.idbadge
--- GROUP BY b.id, b.cod, b.name, b.filename;
+CREATE OR REPLACE VIEW v_taxi AS
+  SELECT
+    t.id        AS selected,
+    t.id        AS id,
+    t.uid       AS uid,
+    t.plate     AS plate,
+    t.uri       AS uri,
+    t.desc      AS 'desc',
+    t.rating    AS rating,
+    t.taxiphoto AS taxiphoto,
+    t.taxicolor AS taxicolor,
+    t.lat       AS lat,
+    t.lng       AS lng,
+    t.idcity    AS idcity,
+    t.status    AS status,
+    t.created   AS created,
+    t.updated   AS updated,
+    t.number    AS number
+  FROM taxi t;
+
 
 -- -----------------------------------------------------
--- View `v_badge_stats`
+-- View `v_addresstaxi`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge_stats AS
--- SELECT b.id, b.cod, b.name, DATE_FORMAT(be.created,'%Y-%m-%d') AS date_earned, COUNT(be.id) AS badge_earned
--- FROM `badge` b
--- LEFT JOIN `badge_earned` be ON b.id = be.idbadge
--- GROUP BY b.id, b.cod, b.name, DATE_FORMAT(be.created,'%Y-%m-%d');
+CREATE OR REPLACE VIEW v_addresstaxi AS
+  SELECT
+    t.id                                 AS selected,
+    t.id                                 AS id,
+    t.uid                                AS uid,
+    t.plate                              AS plate,
+    t.uri                                AS uri,
+    t.desc                               AS description,
+    t.rating                             AS rating,
+    t.taxiphoto                          AS taxiphoto,
+    t.taxicolor                          AS taxicolor,
+    t.lat                                AS lat,
+    t.lng                                AS lng,
+    t.idcity                             AS idcity,
+    t.status                             AS status,
+    t.created                            AS created,
+    t.updated                            AS updated,
+    t.number                             AS number,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname,
+    p.avatar                             AS avatar
+  FROM taxi t
+    JOIN profile p
+      ON p.uid = t.uid;
+-- -----------------------------------------------------
+-- View `v_address`
+-- -----------------------------------------------------
+
+CREATE OR REPLACE VIEW v_address AS
+  SELECT
+    a.id                                 AS selected,
+    a.id                                 AS id1,
+    a.id                                 AS id,
+    a.uid                                AS uid,
+    a.lat                                AS lat,
+    a.lng                                AS lng,
+    a.address1                           AS fulladdress,
+    a.phone                              AS phone,
+    a.main                               AS main,
+    a.status                             AS status,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname
+  FROM address a
+    INNER JOIN profile p
+      ON a.uid = p.uid;
 
 -- -----------------------------------------------------
--- View `v_badge_assign`
+-- View `v_addressbooking`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge_earned AS
--- SELECT b.id, b.idbadge, b.created, b.rating, b.notes, b.status, b.uid, b.updated,  bt.cod, bt.name, u.username, CONCAT(p.firstname,' ',p.lastname) AS fullname, p.email
--- FROM `badge_earned` b
--- LEFT JOIN `badge` bt ON bt.id = b.idbadge
--- LEFT JOIN `user` u ON u.id = b.uid
--- LEFT JOIN `profile` p ON p.uid = u.id;
---
--- SET SQL_MODE=@OLD_SQL_MODE;
--- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
--- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+CREATE OR REPLACE VIEW v_addressbooking AS
+  SELECT
+    a.id                                 AS selected,
+    a.id                                 AS id1,
+    a.id                                 AS id,
+    a.uid                                AS uid,
+    a.lat                                AS lat,
+    a.lng                                AS lng,
+    a.address1                           AS fulladdress,
+    a.phone                              AS phone,
+    a.main                               AS main,
+    a.status                             AS status,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname
+  FROM address a
+    INNER JOIN profile p
+      ON a.uid = p.uid
+

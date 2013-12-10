@@ -238,7 +238,7 @@ CREATE  TABLE IF NOT EXISTS `taxilocation` (
 ) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `booking` RESERVA TAXI O COMPANIA
+-- Table `booking` Solicitud TAXI O COMPANIA
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `booking` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,

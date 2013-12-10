@@ -115,12 +115,11 @@ class Users extends Membership {
         echo $data['result'];
     }
 
-    function listenerClientEdit ($uid)
+    function listenerClientAddress ($uid)
     {
-       // $uid = $this->input->post('id');
         $options['custom_filter'] = "uid = '$uid'";
-        $table = 'address';
-        $columns = array('id','uid','lat','lng','address1','address2','phone','extension','idcity','state','zip','main','status');
+        $table = 'v_address';
+        $columns = array('selected','lat','lng','fulladdress','phone','main','id');
         $index = 'id';
         get_layout()->enabled(false);
         $this->load->model('datatablemodel','mdatatable');
@@ -327,6 +326,9 @@ class Users extends Membership {
 			$message = "";
 			$user = $this->input->post("user", true);
 			$profile = $this->input->post("profile", true);
+
+            log_message("debug","*****".print_r($user,true));
+            log_message("debug","*****".print_r($profile,true));
             if(isset($profile))
             {
                 $profile['gender'] = $profile['gender']=="male" ? 0 : 1;

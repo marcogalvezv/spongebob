@@ -26,7 +26,7 @@ class Fb_ignited {
 		$_REQUEST['code']  = isset($fb_query_strings['code'])?$fb_query_strings['code']:""; 
 		$fb_params = $this->fb_set_globals($params);
 		$this->CI = & get_instance();
-		$this->CI->load->library('facebook', $fb_params);
+
 	}
 
 	function __call($method, $params) {

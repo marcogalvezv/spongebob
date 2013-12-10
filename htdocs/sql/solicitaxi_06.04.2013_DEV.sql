@@ -209,6 +209,7 @@ CREATE  TABLE IF NOT EXISTS `taxi` (
 	`lng` DECIMAL(20,10) NOT NULL DEFAULT -63.18257,
 	`idcity` INT(10) NOT NULL ,
 	`status` SMALLINT(1) NULL COMMENT '0:disable-1:enable' ,
+	`number` INT(10) NULL,
 	`created` TIMESTAMP NULL,
 	`updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) ,
@@ -238,7 +239,7 @@ CREATE  TABLE IF NOT EXISTS `taxilocation` (
 ) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `booking` RESERVA TAXI O COMPANIA
+-- Table `booking` Solicitud TAXI O COMPANIA
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `booking` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,

@@ -13,35 +13,7 @@ class Systemmodel extends CI_Model
 		$this->load->model('Persistencemodel', 'persistence');
     }
 	
-    function checkLoginFB()
-    {
-		/*CHECK FACEBOOK USER*/
-		$ci =& get_instance();
-		$ci->load->model('Usermodel', 'muser');
 
-        $ci->load->library('fb_ignited');
-		$this->me = $ci->fb_ignited->fb_get_me(false);
-
-//echo "<pre>";
-//print_r($this->me);
-//echo "</pre>";
-		
-		if(isset($this->me) && !empty($this->me)){
-            $userFB = $ci->muser->getByField($this->me['id'],'idfacebook');
-			
-//echo "<pre>";
-//print_r($userFB);
-//print_r($userFB->id);
-//print_r($userFB->idfacebook);
-//echo "</pre>";
-			if((isset($userFB)) && (!empty($userFB))){
-				//$this->loginById($userFB->id);
-				$this->set_idfacebook($userFB->idfacebook);
-				return true;
-			}
-		}
-        return false;
-    }
 	
     function profileFB() 
     {
@@ -561,10 +533,6 @@ echo "</pre>";*/
         return $result;
     }
 
-    function set_idfacebook($id) 
-    {
-        return $this->session->set_userdata('idfacebook', $id);
-    }
 	
     function set_uid($id) 
     {

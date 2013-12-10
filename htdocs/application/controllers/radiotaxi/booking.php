@@ -1,5 +1,6 @@
 <?php
-class Booking extends Membership {
+class Booking extends Membership
+{
 
     function __construct()
     {
@@ -8,27 +9,29 @@ class Booking extends Membership {
         $this->load->helper("layout");
 
         $language = $this->session->userdata('language');
-        if(empty($language)){
-            $language = 'es';//spanish
+        if (empty($language)) {
+            $language = 'es'; //spanish
         }
 
         //SET LANGUAGE
-        $this->session->set_userdata('language',$language);
+        $this->session->set_userdata('language', $language);
 
         //SET LANGUAGES
-        if(file_exists($_SERVER['DOCUMENT_ROOT']."/application/language/$language/admin_lang.php")){
-            $this->lang->load('admin',$language);
-        }else{
-            $this->lang->load('admin','es');
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/application/language/$language/admin_lang.php")) {
+            $this->lang->load('admin', $language);
+        } else {
+            $this->lang->load('admin', 'es');
         }
 
 //        $this->load->model('systemmodel', 'msystem');
 //        $this->load->model('usermodel', 'muser');
 //        $this->load->model('usersocialmodel', 'musersocial');
-//        $this->load->model('profilemodel', 'mprofile');
+        $this->load->model('profilemodel', 'mprofile');
 //        $this->load->model("countrymodel","mcountry");
 //        $this->load->model("citymodel","mcities");
-//        $this->load->model("addressmodel","maddress");
+        $this->load->model("addressmodel", "maddress");
+        $this->load->model("taximodel", "mtaxi");
+        $this->load->model("bookingmodel", "mbooking");
         //$this->load->helper("phpmailer");
 
         //DATATABLE
@@ -47,16 +50,22 @@ class Booking extends Membership {
         //$this->load->view('admin/users/view');
     }
 
+    function androidpost()
+    {
 
+        log_message("debug", "*********Data:" . print_r("androidpost", true));
+        $lat = $this->input->post('lat');
+        log_message("debug", "*********Data:" . print_r($lat, true));
+    }
 
 
     function listener()
     {
         $table = 'v_booking';
-        $columns = array('selected','fullname','fulladdress','fulldestination','idtaxi','id');
+        $columns = array('selected', 'fullname', 'fulladdress', 'status', 'number', 'id');
         $index = 'id';
         get_layout()->enabled(false);
-        $this->load->model('datatablemodel','mdatatable');
+        $this->load->model('datatablemodel', 'mdatatable');
         $data['result'] = $this->mdatatable->generate($table, $columns, $index);
         echo $data['result'];
     }
@@ -64,9 +73,16 @@ class Booking extends Membership {
     function getFirtsFiveAdress()
     {
         get_layout()->enabled(false);
-        $table = 'v_booking';
-        $this->load->model('bookingmodel','mbooking');
+        $this->load->model('bookingmodel', 'mbooking');
         $data = $this->mbooking->getAddressList();
+        echo json_encode($data);
+    }
+
+    function getActiveBookingClients()
+    {
+        get_layout()->enabled(false);
+        $this->load->model('bookingmodel', 'mbooking');
+        $data = $this->mbooking->getActiveBookingClientPositions();
         echo json_encode($data);
     }
 
@@ -74,26 +90,83 @@ class Booking extends Membership {
     {
         get_layout()->enabled(false);
         $id = $this->input->post('id');
-
-        //$data['countries'] = $this->mcountry->getCountryList()->result();
-        //$data['cities'] = $this->mcities->getCityList()->result();
-
-        $data['typedocs'] = array(
-            'ID card',
-            'Passport',
-            'DNI',
-            'Other'
-        );
+        $data['clientlist'] = $this->mprofile->getClients();
+        $data['taxilist'] = $this->mtaxi->getTaxiDrivers();
+        $data['driverlist'] = $this->mprofile->getDrivers();
+        //$data['addresslist'] = $this->maddress->getClientAddress();
 
         // edit only
-        if($id > 0){
+        if ($id > 0) {
 
-            //$user = $this->muser->getById($id);
-            //$profile = $this->mprofile->getByField($id,'uid');
-            //$data['user'] = $user;
-            //$data['profile'] = $profile;
+            $booking = $this->mbooking->getById($id);
+            $address = $this->maddress->getByField($booking->idadd, 'id');
+            $profileclient = $this->mprofile->getByField($address->uid, 'uid');
+
+
+            $taxi = $this->mtaxi->getByField($booking->idtaxi, 'id');
+            if (isset($taxi)) {
+                $profiledriver = $this->mprofile->getByField($taxi->uid, 'uid');
+                $data['taxi'] = $taxi;
+                $data['profiledriver'] = $profiledriver;
+            }
+            $data['booking'] = $booking;
+            $data['profileclient'] = $profileclient;
+
+            $data['address'] = $address;
+            //$data['usersocial'] = $usersocial;
+            log_message("debug", "*********ajaxedit:" . print_r("booking", true));
+            log_message("debug", "*********Data:" . print_r($data, true));
         }
+
         $this->load->view('radiotaxi/editbooking', $data);
+
+    }
+
+    function getAssignedTaxiLocation($id)
+    {
+
+        get_layout()->enabled(false);
+        log_message("debug", "*********taxilocation:" . print_r($id, true));
+        $booking = $this->mbooking->getById($id);
+        $taxi = $this->mtaxi->getByField($booking->idtaxi, 'id');
+        log_message("debug", "*********taxilocation:" . print_r($taxi, true));
+        echo json_encode($taxi);
+
+    }
+
+    function ajaxsave()
+    {
+        get_layout()->enabled(false);
+        if ($_POST) {
+            $activate = FALSE;
+            $error = FALSE;
+            $updated = FALSE;
+            $message = "";
+            $taxi = $this->input->post("taxi", true);
+            $address = $this->input->post("address", true);
+            $booking = $this->input->post("booking", true);
+
+            //$taxi = $this->mtaxi->getByField($taxi['id'],'id');
+            $booking['idadd'] = $address['id'];
+            $booking['idtaxi'] = $taxi['id'];
+            $taxi['status'] = $booking['status'] == 2 ? 0 : 1;
+            log_message("debug", "*****taxi" . print_r($taxi, true));
+            log_message("debug", "*****booking" . print_r($booking, true));
+            $idbooking = $this->mbooking->save($booking);
+            $idtaxi = $this->mtaxi->save($taxi);
+            if (!$error) {
+                $success = TRUE;
+            } else {
+                $success = FALSE;
+            }
+            $json = array(
+                'success' => $success,
+                'message' => $message
+            );
+
+            log_message("debug", "*****" . print_r($json, true));
+            echo json_encode($json);
+        }
     }
 
 }

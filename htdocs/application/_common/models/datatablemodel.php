@@ -372,10 +372,63 @@ class Datatablemodel extends CI_Model{
                 $actions = "<center>{$checkbox}</center>";
                 $aaData[$row_key][] = $actions;
             }elseif($col_key == 'status' && $this->tablename == "v_taxi"){
-
-
                 $actions = $col_val == 0 ? "Libre":"Ocupado" ;
                 $aaData[$row_key][] = $actions;
+            }
+            elseif($col_key == 'selected' && $this->tablename == "v_address"){
+
+                $id = $col_val;
+                $checkbox = "<input type='checkbox' value='{$row_val["id"]}' name='taxi[]' id='selectaddress_"
+                    .$row_val["id"]."' class='cb_new_published' />";
+                $actions = "<center>{$checkbox}</center>";
+                $aaData[$row_key][] = $actions;
+            }
+            elseif($col_key == 'main' && $this->tablename == "v_address"){
+
+                $actions = $col_val == 1 ? "Si":"No" ;
+                $aaData[$row_key][] = $actions;
+            }
+            elseif($col_key == 'id' && $this->tablename == "v_address"){
+                $id = $col_val;
+                $iduri = $id;
+                $links = "<span class='btn-group'>
+                                            <a href='#' class='btn btn-small' onclick={$this->tablename}_edit($id) id='edit_$id'><i class='icon-pencil'></i></a>
+                                        </span>";
+                $aaData[$row_key][] = $links;
+            }
+            elseif($col_key == 'id' && $this->tablename == "v_addressbooking"){
+                $id = $col_val;
+                $iduri = $id;
+                $links = "<span class='btn-group'>
+                                            <a href='#' class='btn btn-small' onclick={$this->tablename}_select($id) id='selectaddress_$id'><i class='icon-ok'></i></a>
+                                        </span>";
+                $aaData[$row_key][] = $links;
+            } elseif($col_key == 'id' && $this->tablename == "v_addresstaxi"){
+                $id = $col_val;
+                $iduri = $id;
+                $links = "<span class='btn-group'>
+                                            <a href='#' class='btn btn-small' onclick={$this->tablename}_select($id) id='selecttaxi_$id'><i class='icon-ok'></i></a>
+                                        </span>";
+                $aaData[$row_key][] = $links;
+            }
+
+            elseif($col_key == 'status' && $this->tablename == "v_booking"){
+                $bookingStatuses[1] = 'Sin Asignar';
+                $bookingStatuses[2] = 'Taxi Asignado';
+                $bookingStatuses[3] = 'Esperando pasajero';
+                $bookingStatuses[4] = 'En Progreso';
+                $bookingStatuses[5] = 'Terminada';
+                $bookingStatuses[6] = 'Cancelada';
+                $actions = $bookingStatuses[$col_val];
+                $aaData[$row_key][] = $actions;
+            }
+            elseif($col_key == 'id' && $this->tablename == "v_booking"){
+                $id = $col_val;
+                $iduri = $id;
+                $links = "<span class='btn-group'>
+                                            <a href='#' class='btn btn-small' onclick={$this->tablename}_edit($id) id='edit_$id'><i class='icon-pencil'></i></a>
+                                        </span>";
+                $aaData[$row_key][] = $links;
             }
             elseif($col_key == 'id'){
 				$id = $col_val;
@@ -389,10 +442,6 @@ class Datatablemodel extends CI_Model{
                 //$links = "<center><a href='javascript:void(0)' onclick={$this->tablename}_edit($id) id='edit_$id'"."><img src='../images/tables/page_white_edit.png' border='0' alt='edit'></a>"."&nbsp;&nbsp;&nbsp;"."<a href='javascript:void(0)' onclick={$this->tablename}_delete($id) id='delete_$id'"."><img src='../images/tables/deleteitem.png' border='0' alt='delete'></a></center>";
 
                 $aaData[$row_key][] = $links;
-
-
-
-
             }else{
 				$aaData[$row_key][] = $col_val;
 			}

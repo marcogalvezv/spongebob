@@ -57,6 +57,17 @@ class Taxi extends Membership {
         echo $data['result'];
     }
 
+    function listenereditbooking()
+    {
+        $table = 'v_addresstaxi';
+        $columns = array('selected','number','plate','taxicolor','status','description','fullname','id');
+        $index = 'id';
+        get_layout()->enabled(false);
+        $this->load->model('datatablemodel','mdatatable');
+        $data['result'] = $this->mdatatable->generate($table, $columns, $index);
+        echo $data['result'];
+    }
+
 
     function ajaxedit()
     {
@@ -109,7 +120,7 @@ class Taxi extends Membership {
             $taxi['uri'] = $taxi['plate'];
             $taxi['idcity'] = 2;
             //$taxi['uid'] = 2;
-            log_message("debug","*****".print_r($taxi,true));
+            log_message("debug","*****datos taxi".print_r($taxi,true));
             log_message("debug","*****".print_r($profile,true));
             //NEW
                 $id = $this->mtaxi->save($taxi);
@@ -287,6 +298,36 @@ class Taxi extends Membership {
             );
             echo json_encode($json);
         }
+    }
+
+    function getLocationList()
+    {
+        get_layout()->enabled(false);
+
+
+        $data = $this->mtaxi->getLocationList();
+        echo json_encode($data);
+    }
+
+    function getActiveTaxis()
+    {
+        get_layout()->enabled(false);
+        $data = $this->mtaxi->getActiveTaxiLocations();
+        echo json_encode($data);
+    }
+    function getTaxi($id)
+    {
+        get_layout()->enabled(false);
+        $taxi = $this->mtaxi->getByField($id, 'id');
+        echo json_encode($taxi);
+    }
+
+
+    function getTaxiWithDriver($id)
+    {
+        get_layout()->enabled(false);
+        $taxi = $this->mtaxi->getTaxiWithDriver($id, 'id');
+        echo json_encode($taxi);
     }
 }
 

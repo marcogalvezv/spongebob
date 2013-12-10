@@ -97,10 +97,6 @@ protected $_table_name = "taxi";
 			$this->db->like('company.name', $search['keywords']);
 		}
 
-		//filter logic by search () array
-		//$this->db->where('user.gid', 2);
-		
-		//default order by rating 
 		$this->db->order_by('rating', 'DESC');
 		
 		//FILTER BY CITY CODE (CB, SC, LP)
@@ -117,9 +113,7 @@ protected $_table_name = "taxi";
 
 		$sql = $this->db->last_query();
 		
-		//echo "\n";
-		//print_r($sql);
-		//echo "\n";
+
 		
 		$res = array();
 		if ($query->num_rows() > 0)
@@ -133,4 +127,49 @@ protected $_table_name = "taxi";
 		}
 		return $res;
 	}
+
+    function getLocationList()
+    {
+        $this->db->select('id,number,lat,lng');
+        $this->db->from('taxi');
+        $this->db->where('status',0);
+        $this->db->order_by('id', 'ASC');
+
+        $query = $this->db->get();
+
+        $res = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+            $res = array();
+            foreach($result as $row) {
+                $res[] = $row;
+            }
+        }
+        return $res;
+    }
+
+    function getActiveTaxiLocations()
+    {
+        $query = $this->db->query("select lat, lng, number, status from v_taxi where status=0");
+        $result = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+        }
+        return $result;
+    }
+
+    function getTaxiWithDriver()
+    {
+        $query = $this->db->query("select id, number, plate, taxicolor, taxiphoto, status, fullname, avatar  from v_addresstaxi");
+        $result = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+        }
+        return $result;
+    }
+
+
 }

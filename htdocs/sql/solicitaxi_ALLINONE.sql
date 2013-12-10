@@ -266,6 +266,7 @@ CREATE  TABLE IF NOT EXISTS `taxi` (
 	`lng` DECIMAL(20,10) NOT NULL DEFAULT -63.18257,
 	`idcity` INT(10) NOT NULL ,
 	`status` SMALLINT(1) NULL COMMENT '0:disable-1:enable' ,
+	`number` INT(10) NULL,
 	`created` TIMESTAMP NULL,
 	`updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`) ,
@@ -295,7 +296,7 @@ CREATE  TABLE IF NOT EXISTS `taxilocation` (
 ) CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `booking` RESERVA TAXI O COMPANIA
+-- Table `booking` Solicitud TAXI O COMPANIA
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `booking` (
   `id` INT(10) NOT NULL AUTO_INCREMENT ,
@@ -717,9 +718,9 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
-SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
-SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
+SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE = 'TRADITIONAL';
 
 /*
 *****************************
@@ -732,70 +733,169 @@ CREATE VIEWS
 -- -----------------------------------------------------
 
 CREATE OR REPLACE VIEW v_userprofile AS
-SELECT u.id as selected, p.id, p.uid, CONCAT(p.firstname, ' ', p.lastname) as name, p.email, c.name as country, p.company,
-(CASE WHEN u.activation_code = "" THEN 'Yes' WHEN u.activation_code IS NULL THEN 'Yes' ELSE 'No' END) as activated,
-(CASE WHEN u.status = 1 THEN 'Approved' WHEN u.status = 0 THEN 'Blocked' END) as status,
-p.created as signupdate,
-u.gid as gid
-FROM profile p
-LEFT JOIN country c ON p.idcountry = c.id
-LEFT JOIN user u ON u.id = p.uid
-WHERE p.uid != 1
-GROUP BY p.uid
-ORDER BY p.id;
+  SELECT
+    u.id                                   AS selected,
+    p.id,
+    p.uid,
+    CONCAT(p.firstname, ' ', p.lastname)   AS name,
+    p.email,
+    c.name                                 AS country,
+    p.company,
+    (CASE WHEN u.activation_code = "" THEN 'Yes'
+     WHEN u.activation_code IS NULL THEN 'Yes'
+     ELSE 'No' END)                        AS activated,
+    (CASE WHEN u.status = 1 THEN 'Approved'
+     WHEN u.status = 0 THEN 'Blocked' END) AS status,
+    p.created                              AS signupdate,
+    u.gid                                  AS gid
+  FROM profile p
+    LEFT JOIN country c
+      ON p.idcountry = c.id
+    LEFT JOIN user u
+      ON u.id = p.uid
+  WHERE p.uid != 1
+  GROUP BY p.uid
+  ORDER BY p.id;
 
 -- -----------------------------------------------------
 -- View `v_company`
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW v_company AS
-SELECT c.id as selected, c.id, c.uid, c.name, c.uri, c.desc, c.slogan, c.rating, c.logo, c.numtaxis, c.lat, c.lng, c.email,
-(CASE WHEN c.status = 1 THEN 'Approved' WHEN c.status = 0 THEN 'Blocked' END) as status
-FROM company c;
+  SELECT
+    c.id                                   AS selected,
+    c.id,
+    c.uid,
+    c.name,
+    c.uri,
+    c.desc,
+    c.slogan,
+    c.rating,
+    c.logo,
+    c.numtaxis,
+    c.lat,
+    c.lng,
+    c.email,
+    (CASE WHEN c.status = 1 THEN 'Approved'
+     WHEN c.status = 0 THEN 'Blocked' END) AS status
+  FROM company c;
 
 -- -----------------------------------------------------
 -- View `v_booking`
 -- -----------------------------------------------------
 CREATE OR REPLACE VIEW v_booking AS
-SELECT b.id as selected,b.*,
-CONCAT(a.address1,' ',a.address2) AS fulladdress, a.lat AS addlat, a.lng AS addlng,
-CONCAT(p.lastname,' ',p.firstname) AS fullname,
-CONCAT(d.address1,' ',d.address2) AS fulldestination, d.lat AS destlat, d.lng AS destlng
-FROM `booking` b
-JOIN `address` a ON b.idadd = a.id
-JOIN `profile` p ON a.uid = p.uid
-LEFT JOIN `destination` d ON b.iddest = d.id;
+  SELECT
+    b.id                                 AS selected,
+    b.*,
+    CONCAT(a.address1, ' ', a.address2)  AS fulladdress,
+    a.lat                                AS addlat,
+    a.lng                                AS addlng,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname,
+    CONCAT(d.address1, ' ', d.address2)  AS fulldestination,
+    d.lat                                AS destlat,
+    d.lng                                AS destlng,
+    t.`number`                           AS `number`
+  FROM `booking` b
+    JOIN `address` a
+      ON b.idadd = a.id
+    JOIN `profile` p
+      ON a.uid = p.uid
+    LEFT JOIN `destination` d
+      ON b.iddest = d.id
+    LEFT JOIN `taxi` `t`
+      ON `b`.`idtaxi` = `t`.`id`;
 
 -- -----------------------------------------------------
--- View `v_badge`
+-- View `v_taxi`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge AS
--- SELECT b.id, b.cod, b.name, b.message, b.question, b.filename, b.status, COUNT(be.id) AS badge_earned
--- FROM `badge` b
--- LEFT JOIN `badge_earned` be ON b.id = be.idbadge
--- GROUP BY b.id, b.cod, b.name, b.filename;
+CREATE OR REPLACE VIEW v_taxi AS
+  SELECT
+    t.id        AS selected,
+    t.id        AS id,
+    t.uid       AS uid,
+    t.plate     AS plate,
+    t.uri       AS uri,
+    t.desc      AS 'desc',
+    t.rating    AS rating,
+    t.taxiphoto AS taxiphoto,
+    t.taxicolor AS taxicolor,
+    t.lat       AS lat,
+    t.lng       AS lng,
+    t.idcity    AS idcity,
+    t.status    AS status,
+    t.created   AS created,
+    t.updated   AS updated,
+    t.number    AS number
+  FROM taxi t;
+
 
 -- -----------------------------------------------------
--- View `v_badge_stats`
+-- View `v_addresstaxi`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge_stats AS
--- SELECT b.id, b.cod, b.name, DATE_FORMAT(be.created,'%Y-%m-%d') AS date_earned, COUNT(be.id) AS badge_earned
--- FROM `badge` b
--- LEFT JOIN `badge_earned` be ON b.id = be.idbadge
--- GROUP BY b.id, b.cod, b.name, DATE_FORMAT(be.created,'%Y-%m-%d');
+CREATE OR REPLACE VIEW v_addresstaxi AS
+  SELECT
+    t.id                                 AS selected,
+    t.id                                 AS id,
+    t.uid                                AS uid,
+    t.plate                              AS plate,
+    t.uri                                AS uri,
+    t.desc                               AS description,
+    t.rating                             AS rating,
+    t.taxiphoto                          AS taxiphoto,
+    t.taxicolor                          AS taxicolor,
+    t.lat                                AS lat,
+    t.lng                                AS lng,
+    t.idcity                             AS idcity,
+    t.status                             AS status,
+    t.created                            AS created,
+    t.updated                            AS updated,
+    t.number                             AS number,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname,
+    p.avatar                             AS avatar
+  FROM taxi t
+    JOIN profile p
+      ON p.uid = t.uid;
+-- -----------------------------------------------------
+-- View `v_address`
+-- -----------------------------------------------------
+
+CREATE OR REPLACE VIEW v_address AS
+  SELECT
+    a.id                                 AS selected,
+    a.id                                 AS id1,
+    a.id                                 AS id,
+    a.uid                                AS uid,
+    a.lat                                AS lat,
+    a.lng                                AS lng,
+    a.address1                           AS fulladdress,
+    a.phone                              AS phone,
+    a.main                               AS main,
+    a.status                             AS status,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname
+  FROM address a
+    INNER JOIN profile p
+      ON a.uid = p.uid;
 
 -- -----------------------------------------------------
--- View `v_badge_assign`
+-- View `v_addressbooking`
 -- -----------------------------------------------------
--- CREATE OR REPLACE VIEW v_badge_earned AS
--- SELECT b.id, b.idbadge, b.created, b.rating, b.notes, b.status, b.uid, b.updated,  bt.cod, bt.name, u.username, CONCAT(p.firstname,' ',p.lastname) AS fullname, p.email
--- FROM `badge_earned` b
--- LEFT JOIN `badge` bt ON bt.id = b.idbadge
--- LEFT JOIN `user` u ON u.id = b.uid
--- LEFT JOIN `profile` p ON p.uid = u.id;
---
--- SET SQL_MODE=@OLD_SQL_MODE;
--- SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
--- SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+CREATE OR REPLACE VIEW v_addressbooking AS
+  SELECT
+    a.id                                 AS selected,
+    a.id                                 AS id1,
+    a.id                                 AS id,
+    a.uid                                AS uid,
+    a.lat                                AS lat,
+    a.lng                                AS lng,
+    a.address1                           AS fulladdress,
+    a.phone                              AS phone,
+    a.main                               AS main,
+    a.status                             AS status,
+    CONCAT(p.lastname, ' ', p.firstname) AS fullname
+  FROM address a
+    INNER JOIN profile p
+      ON a.uid = p.uid
+
 /*
 *****************************
 TESTING INITIAL DATA
@@ -809,9 +909,9 @@ TESTING INITIAL DATA
 INSERT INTO `usergroup` (`id`, `name`, `homepage`, `created`, `updated`) VALUES
 (1, 'Admin', '/admin/dashboard', NOW(), NOW()),
 (2, 'Client', '/welcome', NOW(), NOW()),
-(3, 'Company', '/company/dashboard', NOW(), NOW()),
-(4, 'Taxi', '/taxi/dashboard', NOW(), NOW()),
-(5, 'RadioTaxi', '/radiotaxi/dashboard', NOW(), NOW());
+(3, 'Company', '/taxi/dashboard', NOW(), NOW()),
+(4, 'Driver', '/driver/dashboard', NOW(), NOW());
+
 
 --
 -- Dumping data for table `user`
@@ -821,28 +921,8 @@ INSERT INTO `user` (`id`, `gid`, `idfacebook`, `username`, `password`, `activati
 (1, 1, NULL, 'admin', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-05-07 10:39:03', '2011-12-07 10:39:03'),
 (2, 2, NULL, 'testuser1', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-05-07 10:39:03', '2011-12-07 10:39:03'),
 (3, 2, NULL, 'testuser2', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(4, 5, NULL, 'jardin', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-12-07 10:39:03', '2011-12-07 10:39:03'),
-(5, 5, NULL, 'renacer', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(6, 5, NULL, 'rosa', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(7, 5, NULL, 'evip', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(8, 5, NULL, 'geminis', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(9, 5, NULL, 'bozo', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(10,5, NULL, 'alfaomega', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(11,4, NULL, 'taxitest1', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(12,4, NULL, 'taxitest2', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(13,4, NULL, 'taxitest3', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(14,4, NULL, 'taxitest4', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(15,4, NULL, 'taxitest5', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(16,4, NULL, 'taxitest6', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(17,4, NULL, 'taxitest7', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(18,4, NULL, 'taxitest8', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(19,4, NULL, 'taxitest9', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(20,4, NULL, 'taxitest10','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(21,5, NULL, 'taxitest11','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(22,5, NULL, 'taxitest12','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(23,5, NULL, 'taxitest13','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(24,5, NULL, 'taxitest14','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03'),
-(25,5, NULL, 'taxitest15','bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-06-17 10:39:03', '2011-12-07 10:39:03');
+(4, 3, NULL, 'jardin', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-12-07 10:39:03', '2011-12-07 10:39:03'),
+(5, 4, NULL, 'driver', 'bee9cef7c5d90536144a57bcb6fdf6be61703a414b09ae0d99', NULL, NULL, 1, NULL, '2011-12-07 10:39:03', '2011-12-07 10:39:03');
 
 --
 -- Dumping data for table `badge`
@@ -850,62 +930,6 @@ INSERT INTO `user` (`id`, `gid`, `idfacebook`, `username`, `password`, `activati
 INSERT INTO `prize` (`id`, `name`, `desc`, `status`, `quantity`) VALUES
 (1, 'First Prize', 'First Prize', 1, 100);
 
---
--- Dumping data for table `badge`
---
-INSERT INTO `badge` (`id`, `cod`, `name`, `message`, `question`, `filename`, `status`, `created`, `updated`, `idprize`) VALUES
-(1, 'NB', 'Newbie', 'Congrats on your first check-in!', 'How to get the Newbie badge?', '/upload/images/badge/newbie.png', 1, NULL, '2012-07-29 01:57:17',1),
-(2, 'ADV', 'Adventurer', 'Tu has hecho checkin en 10 diferentes lugares', 'How to get the Adventurer badge?', '/upload/images/badge/adventurer.png', 1, NULL, '2012-07-29 01:57:17',1),
-(3, 'EXP', 'Explorer', 'Tu has hecho checkin en 25 diferentes lugares!', 'How to get the Explorer badge?', '/upload/images/badge/explorer.png', 1, NULL, '2012-07-29 01:57:17',1),
-(4, 'SUPSTR', 'Superstar', 'Tu has hecho checkin en 100 diferentes lugares!', 'How to get the Superstar badge?', '/upload/images/badge/superstar.png', 1, NULL, '2012-07-29 01:57:17',1),
-(5, 'BEND', 'Bender', 'Tu has hecho checkin en 200 diferentes lugares!', 'How to get the Bender badge?', '/upload/images/badge/bender.png', 1, NULL, '2012-07-29 01:57:17',1),
-(6, 'CRUNK', 'Crunked', 'Tu has hecho checkin en 500 diferentes lugares!', 'How to get the Crunked badge?', '/upload/images/badge/crunked.png', 1, NULL, '2012-07-29 01:57:17',1),
-(7, 'LOCAL', 'Local', 'Tu has hecho checkin en 1000 diferentes lugares!', 'How to get the Local badge?', '/upload/images/badge/local.png', 1, NULL, '2012-07-29 01:57:17',1),
-(8, 'SUPUSR', 'Super User', 'Tu has hecho checkin en 10000 diferentes lugares!', 'How to get the Super User badge?', '/upload/images/badge/superuser.png', 1, NULL, '2012-07-29 01:57:17',1);
-
---
--- Dumping data for table `badge_earned`
---
-
-INSERT INTO `badge_earned` (`id`, `idbadge`,`rating`, `notes`, `status`, `uid`, `created`, `updated`) VALUES
-(1, 1, 4.50, 'Note by example for badge #1', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(2, 1, 4.50, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(3, 1, 4.50, 'Note by example for badge #3', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(4, 1, 4.50, 'Note by example for badge #4', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(5, 1, 4.50, 'Note by example for badge #5', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(6, 1, 4.50, 'Note by example for badge #6', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(7, 1, 4.50, 'Note by example for badge #1', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(8, 1, 4.50, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(9, 1, 4.50, 'Note by example for badge #3', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(10, 1, 4.50, 'Note by example for badge #4', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(11, 1, 4.50, 'Note by example for badge #5', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(12, 1, 4.50, 'Note by example for badge #6', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(13, 1, 4.50, 'Note by example for badge #1', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(14, 1, 4.50, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(15, 1, 4.50, 'Note by example for badge #3', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(16, 1, 4.50, 'Note by example for badge #4', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(17, 1, 4.50, 'Note by example for badge #5', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(18, 1, 4.50, 'Note by example for badge #6', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(19, 1, 4.50, 'Note by example for badge #4', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(20, 1, 4.50, 'Note by example for badge #5', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(21, 1, 4.50, 'Note by example for badge #6', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(22, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(23, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(24, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(25, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(26, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(27, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(28, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(29, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(30, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(31, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(32, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(33, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(34, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(35, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(36, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(37, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17'),
-(38, 2, 4.00, 'Note by example for badge #2', 1, 2, '2012-01-23 11:03:17', '2012-01-23 11:03:17');
 
 --
 -- Dumping data for table `country`
@@ -1376,35 +1400,10 @@ INSERT INTO `city` (`id`, `code`, `uri`, `name`, `lat`, `lng`, `idcountry`) VALU
 --
 
 INSERT INTO `address` (`id`, `uid`, `lat`, `lng`, `address1`, `address2`, `state`, `zip`, `phone`, `extension`, `main`, `status`, `idcity`) VALUES
-(1,  2,  '-17.383037','-66.145357','Avenida Aniceto Arce #0666', 'Entre Juan de La Cruz Torres y Papa Paulo', 'Cercado', '0666', '+591 4 4010304', '', 1, 1, 1),
-(2,  2,  '-17.770511', '-63.18257','Avenida Cristo Redentor', 'Rotonda Segundo Anillo', 'Santa Cruz', '1234', '+591 3 3334444', '', 0, 1, 2),
-(3,  2,  '-17.770205', '-63.178772','Avenida Beni', 'Segundo Anillo', 'Santa Cruz', NULL, NULL, NULL, 0, 1, 2),
-(4,  2,  '-17.774762', '-63.182209','Avenida Cañoto', 'Avenida Monseñor Rivero', 'Santa Cruz', NULL, NULL, NULL, 0, 1, 2),
-(5,  2,  '-17.760131', '-63.184612','Avenida Noel Kempff Mercado', 'Zoologico Noel Kempff Mercado', 'Santa Cruz', NULL, NULL, NULL, 0, 1, 2),
-(6,  2,  '-17.771819', '-63.188303','Avenida Cristobal de Mendoza', 'Avenida La Salle', 'Santa Cruz', NULL, NULL, NULL, 0, 1, 2);
-
-INSERT INTO `destination` (`id`, `uid`, `lat`, `lng`, `address1`, `address2`, `state`, `zip`, `phone`, `extension`,`status`, `idcity`) VALUES
-(1,  2,  '-17.383037','-66.145357','Avenida Aniceto Arce #0666', 'Entre Juan de La Cruz Torres y Papa Paulo', 'Cercado', '0666', '+591 4 4010304', '', 1, 1),
-(2,  2,  '-17.770511', '-63.18257','Avenida Cristo Redentor', 'Rotonda Segundo Anillo', 'Santa Cruz', '1234', '+591 3 3334444', '', 1, 2),
-(3,  2,  '-17.770205', '-63.178772','Avenida Beni', 'Segundo Anillo', 'Santa Cruz', NULL, NULL, NULL, 1, 2),
-(4,  2,  '-17.774762', '-63.182209','Avenida Cañoto', 'Avenida Monseñor Rivero', 'Santa Cruz', NULL, NULL, NULL, 1, 2),
-(5,  2,  '-17.760131', '-63.184612','Avenida Noel Kempff Mercado', 'Zoologico Noel Kempff Mercado', 'Santa Cruz', NULL, NULL, NULL, 1, 2),
-(6,  2,  '-17.771819', '-63.188303','Avenida Cristobal de Mendoza', 'Avenida La Salle', 'Santa Cruz', NULL, NULL, NULL, 1, 2);
+(1,  2,  '-17.393201','-66.162281','Avenida Heroinas #0666 Entre Tumusla y Falsuri', '', 'Cercado', '0666', '79733312', '', 1, 1, 1);
 
 
-INSERT INTO `company` (`id`, `uid`, `idcity`, `name`, `uri`, `desc`, `slogan`, `rating`, `logo`, `banner`, `status`, `email`, `phone`, `numtaxis`, `internet`, `contact_name`, `contact_email`, `contact_phone`, `contact_mobile`, `contact_position`, `lat`, `lng`) VALUES
-(1,   4, 1,  'Ciudad', 'Jardin', 'Servicio de Moto Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/jardin/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(2,   5, 1,  'Renacer', 'renacer', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/renacer/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(3,   6, 1,  'La Rosa', 'la-rosa', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/la-rosa/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(4,   7, 1,  'EVip', 'evip', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/evip/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(5,   8, 1,  'geminis', 'geminis', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/geminis/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(6,   9, 1,  'Bozo Valkirias', 'bozo', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/bozo/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(7,  10, 1,  'Alfa & Omega', 'alfa-omega', 'Servicio de Taxi para toda la ciudad, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/alfa-omega/logo.jpg', NULL, 1, NULL, '4666679', 10, 1, '', NULL, NULL, NULL, NULL,-17.363582,-66.159263),
-(8,  21, 2,  'RadioTaxi Oriental', 'radiotaxi-oriental', 'Servicio de Taxi para toda la ciudad de Santa Cruz, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/radiotaxi-oriental/logo.jpg', NULL, 1, NULL, '3333444', 10, 1, '', NULL, NULL, NULL, NULL,'-17.770511', '-63.18257'),
-(9,  22, 2,  'RadioTaxi Oriental', 'radiotaxi-oriental', 'Servicio de Taxi para toda la ciudad de Santa Cruz, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/radiotaxi-oriental/logo.jpg', NULL, 1, NULL, '3333444', 10, 1, '', NULL, NULL, NULL, NULL,'-17.770511', '-63.18257'),
-(10, 23, 2,  'RadioTaxi Oriental', 'radiotaxi-oriental', 'Servicio de Taxi para toda la ciudad de Santa Cruz, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/radiotaxi-oriental/logo.jpg', NULL, 1, NULL, '3333444', 10, 1, '', NULL, NULL, NULL, NULL,'-17.770511', '-63.18257'),
-(11, 24, 2,  'RadioTaxi Oriental', 'radiotaxi-oriental', 'Servicio de Taxi para toda la ciudad de Santa Cruz, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/radiotaxi-oriental/logo.jpg', NULL, 1, NULL, '3333444', 10, 1, '', NULL, NULL, NULL, NULL,'-17.770511', '-63.18257'),
-(12, 25, 2,  'RadioTaxi Oriental', 'radiotaxi-oriental', 'Servicio de Taxi para toda la ciudad de Santa Cruz, servicios de transporte de personas, recepci&oacute;n de pedidos y contratos en general de forma periodica.', 'El mejor Radio Taxi de la Ciudad', 1.00, 'upload/images/company/radiotaxi-oriental/logo.jpg', NULL, 1, NULL, '3333444', 10, 1, '', NULL, NULL, NULL, NULL,'-17.770511', '-63.18257');
+
 
 --
 -- Dumping data for table `profile`
@@ -1412,54 +1411,13 @@ INSERT INTO `company` (`id`, `uid`, `idcity`, `name`, `uri`, `desc`, `slogan`, `
 
 INSERT INTO `profile` (`id`, `uid`, `firstname`, `lastname`, `gender`, `document`, `typedoc`, `email`, `company`, `mobile`, `avatar`, `created`, `updated`, `idcountry`, `idcity`) VALUES
 (1,  1,  'Admin', 'Admin', NULL, NULL, NULL, 'admin@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1 , 1),
-(2,  2,  'Carlos','Alcala', NULL, NULL, NULL, 'carlos@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1 , 1),
-(3,  3,  'Freddy','Maldonado', NULL, NULL, NULL, 'freddy@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1 , 1),
+(2,  2,  'Marco','Galvez', NULL, '4918359', 'Carnet de Identidad', 'marco@solicitaxi.com', NULL, '79733312', NULL, NOW(), NOW(), 1 , 1),
+(3,  3,  'Freddy','Maldonado', NULL, '564654', 'Carnet de Identidad', 'freddy@solicitaxi.com', NULL, '60737698', NULL, NOW(), NOW(), 1 , 1),
 (4,  4,  'Ciudad','Jardin', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(5,  5,  'Renacer','', NULL, NULL, NULL, 'taxi@hotmail.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(6,  6,  'La','Rosa', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1,  1),
-(7,  7,  'EVip','', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1,  1),
-(8,  8,  'Geminis','', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1,  1),
-(9,  9,  'Bozo','Valkirias', NULL, NULL, NULL, 'grupobozo@gmail.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(10, 10, 'Alfa','Omega', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(11, 11, 'Juan','Perez', NULL, NULL, NULL, 'test1@solicitaxi.com',  NULL, NULL, 'upload/images/user/11/avatar.png', NOW(), NOW(), 1, 1),
-(12, 12, 'Juan','Perez', NULL, NULL, NULL, 'test2@solicitaxi.com',  NULL, NULL, 'upload/images/user/12/avatar.png', NOW(), NOW(), 1, 1),
-(13, 13, 'Juan','Perez', NULL, NULL, NULL, 'test3@solicitaxi.com',  NULL, NULL, 'upload/images/user/13/avatar.png', NOW(), NOW(), 1, 1),
-(14, 14, 'Juan','Perez', NULL, NULL, NULL, 'test4@solicitaxi.com',  NULL, NULL, 'upload/images/user/14/avatar.png', NOW(), NOW(), 1, 1),
-(15, 15, 'Juan','Perez', NULL, NULL, NULL, 'test5@solicitaxi.com',  NULL, NULL, 'upload/images/user/15/avatar.png', NOW(), NOW(), 1, 1),
-(16, 16, 'Juan','Perez', NULL, NULL, NULL, 'test6@solicitaxi.com',  NULL, NULL, 'upload/images/user/16/avatar.png', NOW(), NOW(), 1, 1),
-(17, 17, 'Juan','Perez', NULL, NULL, NULL, 'test7@solicitaxi.com',  NULL, NULL, 'upload/images/user/17/avatar.png', NOW(), NOW(), 1, 1),
-(18, 18, 'Juan','Perez', NULL, NULL, NULL, 'test8@solicitaxi.com',  NULL, NULL, 'upload/images/user/18/avatar.png', NOW(), NOW(), 1, 1),
-(19, 19, 'Juan','Perez', NULL, NULL, NULL, 'test9@solicitaxi.com',  NULL, NULL, 'upload/images/user/19/avatar.png', NOW(), NOW(), 1, 1),
-(20, 20, 'Juan','Perez', NULL, NULL, NULL, 'test10@solicitaxi.com', NULL, NULL, 'upload/images/user/20/avatar.png', NOW(), NOW(), 1, 1),
-(21, 21, 'RadioTaxi','Oriental', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(22, 22, 'RadioTaxi','Oriental', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(23, 23, 'RadioTaxi','Oriental', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(24, 24, 'RadioTaxi','Oriental', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1),
-(25, 25, 'RadioTaxi','Oriental', NULL, NULL, NULL, 'taxi@solicitaxi.com', NULL, NULL, NULL, NOW(), NOW(), 1, 1);
+(5, 5, 'Juan','Perez', NULL, '12313', 'Carnet De Identidad', 'test1@solicitaxi.com',  NULL, NULL, 'temp/user/person1.jpg', NOW(), NOW(), 1, 1);
 
 
-INSERT INTO `taxi` (`id` ,`uid` ,`plate` ,`uri` ,`desc` ,`rating` ,`taxiphoto` ,`status`, `idcity` ,`lat` ,`lng` ,`created` ,`updated`) VALUES 
-(1 , '11', '2121-ABC', '2121-ABC', 'Taxi de Prueba', '5.0', 'upload/images/taxi/2121-ABC/photo.png', '1', '2', '-17.770511', '-63.18257', NOW() ,CURRENT_TIMESTAMP),
-(2 , '12', '2222-ABC', '2222-ABC', 'Taxi de Prueba', '4.0', 'upload/images/taxi/2222-ABC/photo.png', '1', '2', '-17.770205', '-63.178772', NOW() ,CURRENT_TIMESTAMP),
-(3 , '13', '2323-ABC', '2323-ABC', 'Taxi de Prueba', '3.0', 'upload/images/taxi/2323-ABC/photo.png', '1', '2', '-17.774762', '-63.182209', NOW() ,CURRENT_TIMESTAMP),
-(4 , '14', '2424-ABC', '2424-ABC', 'Taxi de Prueba', '2.0', 'upload/images/taxi/2424-ABC/photo.png', '1', '2', '-17.760131', '-63.184612', NOW() ,CURRENT_TIMESTAMP),
-(5 , '15', '2525-ABC', '2525-ABC', 'Taxi de Prueba', '1.0', 'upload/images/taxi/2525-ABC/photo.png', '1', '2', '-17.771819', '-63.188303', NOW() ,CURRENT_TIMESTAMP),
-(6 , '16', '2626-ABC', '2626-ABC', 'Taxi de Prueba', '0.0', 'upload/images/taxi/2626-ABC/photo.png', '1', '2', '-17.78506',  '-63.19509', NOW() ,CURRENT_TIMESTAMP),
-(7 , '17', '2727-ABC', '2727-ABC', 'Taxi de Prueba', '5.0', 'upload/images/taxi/2727-ABC/photo.png', '1', '2', '-17.793968', '-63.181028', NOW() ,CURRENT_TIMESTAMP),
-(8 , '18', '2828-ABC', '2828-ABC', 'Taxi de Prueba', '4.0', 'upload/images/taxi/2828-ABC/photo.png', '1', '2', '-17.785468', '-63.171587', NOW() ,CURRENT_TIMESTAMP),
-(9 , '19', '2929-ABC', '2929-ABC', 'Taxi de Prueba', '3.0', 'upload/images/taxi/2929-ABC/photo.png', '1', '2', '-17.804265', '-63.19994', NOW() ,CURRENT_TIMESTAMP),
-(10, '20', '3030-ABC', '3030-ABC', 'Taxi de Prueba', '2.0', 'upload/images/taxi/3030-ABC/photo.png', '1', '2', '-17.765198', '-63.149085', NOW() ,CURRENT_TIMESTAMP);
 
-INSERT INTO `booking` (`idadd`, `iddest`, `idcomp`, `idtaxi`, `type`, `comments`, `estimated`, `status`, `created`, `updated`) VALUES
-(1, 1, 1, NULL, 2, 'ejemplo de comentario', NULL, 2, '2013-05-13 18:17:56', '2013-05-13 18:17:56'),
-(2, 2, 1, NULL, 2, 'ejemplo de comentario', NULL, 1, '2013-05-13 18:17:56', '2013-05-13 18:17:56'),
-(3, 1, NULL, 1, 1, 'ejemplo de comentario', NULL, 1, '2013-05-13 18:17:56', '2013-05-13 18:17:56'),
-(1, 2, NULL, 2, 1, 'ejemplo de comentario', NULL, 1, '2013-05-13 18:17:56', '2013-05-13 18:17:56'),
-(4, 2, 1, NULL, 2, 'ejemplo de comentario', NULL, 0, '2013-05-13 18:17:56', '2013-05-13 18:17:56'),
-(1, 3, 1, NULL, 2, 'ejemplo de comentario', NULL, 0, '2013-05-13 18:17:56', '2013-05-13 18:17:56');
+INSERT INTO `taxi` (`id` ,`uid` ,`plate` ,`uri` ,`desc` ,`rating` ,`taxiphoto`, `taxicolor` ,`status`, `idcity` ,`lat` ,`lng` ,`created` ,`updated`, `number`) VALUES
+(1 , '5', '2121-ABC', '2121-ABC', 'Taxi de Prueba', '5.0', 'temp/taxi/verde.jpg','verde', '0', '2', '-17.378826', '-66.160908', NOW() ,CURRENT_TIMESTAMP, '1');
 
-INSERT INTO `ride` (`idtaxi`, `idbook`, `estimated`, `obs`, `price`, `currency`, `extra_price`, `total`, `status`, `created`, `updated`) VALUES
-(1, 1, '00:10:00', 'ejemplo de observacion en carrera 1', 8.00, 'BOL', NULL, 8.00, 1, '2013-05-13 18:33:29', '2013-05-13 18:33:29'),
-(2, 2, '00:30:00', 'ejemplo de observacion en carrera 2', 10.00, 'BOL', NULL, 8.00, 1, '2013-05-13 18:33:29', '2013-05-13 18:33:29'),
-(1, 3, '00:15:00', 'ejemplo de observacion en carrera 3', 10.00, 'BOL', NULL, 8.00, 1, '2013-05-13 18:33:29', '2013-05-13 18:33:29'),
-(2, 4, '00:12:00', 'ejemplo de observacion en carrera 4', 12.00, 'BOL', NULL, 8.00, 1, '2013-05-13 18:33:29', '2013-05-13 18:33:29');

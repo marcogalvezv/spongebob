@@ -59,6 +59,28 @@ protected $_table_name = "profile";
         return $res;
     }
 
+    public function getClients()
+    {
+        $this->db->select('profile.*');
+        $this->db->from('profile');
+        $this->db->join('user','user.id = profile.uid', 'left');
+        $this->db->where('user.gid', 2);
+        $this->db->order_by('uid', 'DESC');
+        $query = $this->db->get();
+
+        $res = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+            $res = array();
+            foreach($result as $row) {
+                $res[] = $row;
+            }
+        }
+        log_message("debug","*********Data:".print_r($res,true));
+        return $res;
+    }
+
 
     public function deleteProfilesByFreeUserID($uid) {
 		$this->db->select('profile.id');

@@ -329,6 +329,8 @@ class Users extends Membership {
 			$user = $this->input->post("user", true);
 			$profile = $this->input->post("profile", true);
 
+            log_message("debug", "*********Data:" . print_r($user, true));
+            log_message("debug", "*********Data:" . print_r($profile, true));
             //EDIT ONLY
 			if(isset($profile['address1'])) {
 				if ( get_magic_quotes_gpc() )

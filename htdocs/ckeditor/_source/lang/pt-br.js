@@ -679,7 +679,7 @@ CKEDITOR.lang['pt-br'] =
 		title		: 'Sobre o CKEditor',
 		dlgTitle	: 'About CKEditor', // MISSING
 		moreInfo	: 'Para informações sobre a licença, por favor, visite o nosso site na Internet:',
-		copy		: 'Direito de reprodução &copy; $1. Todos os direitos reservados.'
+		copy		: 'Direito de reprodução &copy; $1. Todos os direitos Solicituddos.'
 	},
 
 	maximize : 'Maximizar',
