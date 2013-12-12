@@ -375,6 +375,10 @@ class Datatablemodel extends CI_Model{
                 $actions = $col_val == 0 ? "Libre":"Ocupado" ;
                 $aaData[$row_key][] = $actions;
             }
+            elseif($col_key == 'status' && $this->tablename == "v_addresstaxi"){
+                $actions = $col_val == 0 ? "Libre":"Ocupado" ;
+                $aaData[$row_key][] = $actions;
+            }
             elseif($col_key == 'selected' && $this->tablename == "v_address"){
 
                 $id = $col_val;

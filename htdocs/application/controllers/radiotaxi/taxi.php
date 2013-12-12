@@ -59,12 +59,13 @@ class Taxi extends Membership {
 
     function listenereditbooking()
     {
+        $options['custom_filter'] = "status = '0'";
         $table = 'v_addresstaxi';
         $columns = array('selected','number','plate','taxicolor','status','description','fullname','id');
         $index = 'id';
         get_layout()->enabled(false);
         $this->load->model('datatablemodel','mdatatable');
-        $data['result'] = $this->mdatatable->generate($table, $columns, $index);
+        $data['result'] = $this->mdatatable->generate($table, $columns, $index, $options);
         echo $data['result'];
     }
 

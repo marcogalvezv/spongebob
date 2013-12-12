@@ -30,6 +30,7 @@ class Booking extends Membership
 //        $this->load->model("countrymodel","mcountry");
 //        $this->load->model("citymodel","mcities");
         $this->load->model("addressmodel", "maddress");
+        $this->load->model("destinationmodel", "mdestination");
         $this->load->model("taximodel", "mtaxi");
         $this->load->model("bookingmodel", "mbooking");
         //$this->load->helper("phpmailer");
@@ -100,6 +101,7 @@ class Booking extends Membership
 
             $booking = $this->mbooking->getById($id);
             $address = $this->maddress->getByField($booking->idadd, 'id');
+            $addressdest = $this->mdestination->getByField($booking->iddest, 'id');
             $profileclient = $this->mprofile->getByField($address->uid, 'uid');
 
 
@@ -111,7 +113,7 @@ class Booking extends Membership
             }
             $data['booking'] = $booking;
             $data['profileclient'] = $profileclient;
-
+            $data['addressdest'] = $addressdest;
             $data['address'] = $address;
             //$data['usersocial'] = $usersocial;
             log_message("debug", "*********ajaxedit:" . print_r("booking", true));
@@ -144,14 +146,37 @@ class Booking extends Membership
             $message = "";
             $taxi = $this->input->post("taxi", true);
             $address = $this->input->post("address", true);
+            $addressdest = $this->input->post("addressdest", true);
             $booking = $this->input->post("booking", true);
+            $client= $this->input->post("client", true);
 
-            //$taxi = $this->mtaxi->getByField($taxi['id'],'id');
+            if ($address['id']=='')
+            {
+               // $address['uid'] = $booking['uid'];
+                $address['id'] = $this->maddress->save($address);
+            }
+
+            if ($addressdest['id']=='')
+            {
+                $addressdest['uid'] = $client['id'];
+                $addressdest['phone'] = $address['phone'];
+                $addressdest['idcity'] = '1';
+                $addressdest['id'] = $this->mdestination->save($addressdest);
+
+            }
+
             $booking['idadd'] = $address['id'];
+
+            if (isset($addressdest['id']))
+                $booking['iddest'] = $addressdest['id'];
+
             $booking['idtaxi'] = $taxi['id'];
-            $taxi['status'] = $booking['status'] == 2 ? 0 : 1;
-            log_message("debug", "*****taxi" . print_r($taxi, true));
-            log_message("debug", "*****booking" . print_r($booking, true));
+            if ($booking['status'] == 5 || $booking['status'] == 1 ||$booking['status'] == 6 )
+                $taxi['status'] =  0;
+            else
+                $taxi['status'] =  1;
+//            log_message("debug", "*****taxi" . print_r($taxi, true));
+//            log_message("debug", "*****booking" . print_r($booking, true));
             $idbooking = $this->mbooking->save($booking);
             $idtaxi = $this->mtaxi->save($taxi);
             if (!$error) {

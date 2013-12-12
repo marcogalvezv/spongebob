@@ -24,8 +24,8 @@ CREATE OR REPLACE VIEW v_userprofile AS
     (CASE WHEN u.activation_code = "" THEN 'Yes'
      WHEN u.activation_code IS NULL THEN 'Yes'
      ELSE 'No' END)                        AS activated,
-    (CASE WHEN u.status = 1 THEN 'Approved'
-     WHEN u.status = 0 THEN 'Blocked' END) AS status,
+    (CASE WHEN u.status = 1 THEN 'Aprobado'
+     WHEN u.status = 0 THEN 'Bloqueado' END) AS status,
     p.created                              AS signupdate,
     u.gid                                  AS gid
   FROM profile p

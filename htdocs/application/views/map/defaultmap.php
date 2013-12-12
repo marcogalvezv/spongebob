@@ -57,6 +57,7 @@
     var taxiMarkersArray = new Array();
 
     $(document).ready(function(){
+        //alert('on document ready');
         oAdminTableUsers = $('#v_bookingtable').dataTable({
             'bServerSide'    : true,
             'bAutoWidth'     : false,
@@ -104,7 +105,7 @@
         console.log('obtained array');
         console.log(clientMarkersArray);
         taxiMarkersArray = drawActiveTaxiMarkers(defaultMap);
-        //reloadMarkers(defaultMap);
+        reloadMarkers(defaultMap);
 
     });
 

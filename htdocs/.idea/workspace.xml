@@ -4,10 +4,10 @@
     <list default="true" id="61b38073-35ca-4671-8cb2-e35fb419a75f" name="Default" comment="" />
     <ignored path="htdocs.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/client.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386446197714" ignored="false" />
-    <file path="/a.dummy" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386642381331" ignored="false" />
-    <file path="/taxi.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386624303531" ignored="false" />
-    <file path="/defaultmap.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386626483055" ignored="false" />
+    <file path="/client.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386814881978" ignored="false" />
+    <file path="/a.dummy" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386818046926" ignored="false" />
+    <file path="/taxi.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386820640957" ignored="false" />
+    <file path="/defaultmap.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386820862254" ignored="false" />
     <file path="$PROJECT_DIR$/application/public/css/front.css" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
     <file path="$PROJECT_DIR$/ckfinder/core/help/es-mx/files/other/help.js" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
     <file path="$PROJECT_DIR$/ckfinder/core/help/es/files/011.html" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
@@ -24,22 +24,23 @@
     <file path="$PROJECT_DIR$/ckfinder/core/help/es/files/license.html" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
     <file path="$PROJECT_DIR$/ckeditor/lang/pt-br.js" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
     <file path="$PROJECT_DIR$/ckfinder/core/help/es-mx/files/011.html" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386122934680" ignored="false" />
-    <file path="/editbooking.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386626934280" ignored="false" />
-    <file path="/booking.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386516782847" ignored="false" />
+    <file path="/editbooking.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386816803121" ignored="false" />
+    <file path="/booking.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386811832777" ignored="false" />
     <file path="/users.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386369458273" ignored="false" />
-    <file path="/solicitaxi_views_DEV.sql" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386624660522" ignored="false" />
+    <file path="/solicitaxi_views_DEV.sql" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386735057052" ignored="false" />
     <file path="/solicitaxi_06.04.2013_DEV.sql" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386387315795" ignored="false" />
     <file path="/usermodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386438618453" ignored="false" />
     <file path="/solicitaxi_datas_DEV.sql" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386642240930" ignored="false" />
     <file path="$PROJECT_DIR$/application/logs/log-2013-12-07.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386439435857" ignored="false" />
     <file path="/datatablemodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386623792260" ignored="false" />
     <file path="/bookingmodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386522077475" ignored="false" />
-    <file path="/taximodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386625641953" ignored="false" />
+    <file path="/taximodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386733784125" ignored="false" />
     <file path="/edit.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386561874980" ignored="false" />
     <file path="/address.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386628099268" ignored="false" />
     <file path="/addressmodel.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386605469318" ignored="false" />
     <file path="/editdriver.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386610528655" ignored="false" />
     <file path="/editclient.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386644027058" ignored="false" />
+    <file path="$PROJECT_DIR$/application/logs/log-2013-12-11.php" changelist="61b38073-35ca-4671-8cb2-e35fb419a75f" time="1386816503129" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,39 +60,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="edit.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/address/edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="200" column="21" selection-start="7251" selection-end="8646" vertical-scroll-proportion="-24.307692">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="editbooking.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/editbooking.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="263" column="122" selection-start="14240" selection-end="14339" vertical-scroll-proportion="-3.0784314">
+            <state line="597" column="29" selection-start="23519" selection-end="23524" vertical-scroll-proportion="-2.116883">
               <folding>
                 <element signature="n#style#0;n#div#0;n#article#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#article#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#2;n#article#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="address.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/address.php">
+      <file leaf-file-name="taxi.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/taxi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="247" column="23" selection-start="7647" selection-end="7656" vertical-scroll-proportion="-65.4902">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="642" column="8" selection-start="34860" selection-end="34860" vertical-scroll-proportion="-4.730769">
+            <state line="59" column="32" selection-start="1737" selection-end="1756" vertical-scroll-proportion="-3.4509804">
               <folding />
             </state>
           </provider>
@@ -100,51 +85,32 @@
       <file leaf-file-name="users.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/users.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="8" selection-start="2243" selection-end="2283" vertical-scroll-proportion="-12.423077">
+            <state line="79" column="14" selection-start="2243" selection-end="2283" vertical-scroll-proportion="-6.8461537">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editclient.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/user/editclient.php">
+      <file leaf-file-name="datatablemodel.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/_common/models/datatablemodel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="96" column="21" selection-start="4179" selection-end="4179" vertical-scroll-proportion="0.477707">
+            <state line="374" column="62" selection-start="14183" selection-end="14183" vertical-scroll-proportion="-8.653846">
               <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#article#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#article#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#form#0;n#div#2;n#div#0;n#article#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#footer#0;n#form#0;n#div#0;n#div#12;n#div#1;n#form#0;n#div#2;n#div#0;n#article#0;n#!!top" expanded="true" />
+                <marker date="1386816637747" expanded="true" signature="11920:12457" placeholder="..." />
+                <marker date="1386816637747" expanded="true" signature="15242:15451" placeholder="..." />
+                <marker date="1386816637747" expanded="true" signature="15706:15922" placeholder="..." />
+                <marker date="1386816637747" expanded="true" signature="16162:16375" placeholder="..." />
+                <marker date="1386816637747" expanded="true" signature="17141:17350" placeholder="..." />
+                <marker date="1386816637747" expanded="true" signature="17540:17913" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="viewclient.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/user/viewclient.php">
+      <file leaf-file-name="taxi.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/services/taxi.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="12" selection-start="4207" selection-end="4207" vertical-scroll-proportion="-6.8461537">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="solicitaxi_datas_DEV.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sql/solicitaxi_datas_DEV.sql">
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="49" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.48">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/address/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="231" column="11" selection-start="7038" selection-end="9072" vertical-scroll-proportion="-11.769231">
+            <state line="76" column="48" selection-start="2567" selection-end="2567" vertical-scroll-proportion="-8.666667">
               <folding />
             </state>
           </provider>
@@ -153,7 +119,43 @@
       <file leaf-file-name="taximodel.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/_common/models/taximodel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="9" selection-start="4086" selection-end="4086" vertical-scroll-proportion="-43.923077">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="105.38461">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="defaultmap.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/map/defaultmap.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="55" column="41" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.20415878">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="booking.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/booking.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="149" column="50" selection-start="5177" selection-end="5184" vertical-scroll-proportion="5.882353">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/services/client.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="118" column="43" selection-start="4914" selection-end="4914" vertical-scroll-proportion="-5.8846154">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="353" column="13" selection-start="11452" selection-end="11452" vertical-scroll-proportion="-5.3846154">
               <folding />
             </state>
           </provider>
@@ -169,31 +171,31 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/application/views/radiotaxi/address/edit.php" />
-        <option value="$PROJECT_DIR$/application/controllers/radiotaxi/users.php" />
-        <option value="$PROJECT_DIR$/application/_common/models/addressmodel.php" />
-        <option value="$PROJECT_DIR$/plupload/uploaduser.php" />
-        <option value="$PROJECT_DIR$/application/views/radiotaxi/user/editdriver.php" />
         <option value="$PROJECT_DIR$/application/views/radiotaxi/taxi/edit.php" />
         <option value="$PROJECT_DIR$/plupload/uploadtaxi.php" />
-        <option value="$PROJECT_DIR$/application/_common/models/datatablemodel.php" />
-        <option value="$PROJECT_DIR$/application/controllers/radiotaxi/taxi.php" />
-        <option value="$PROJECT_DIR$/sql/solicitaxi_views_DEV.sql" />
-        <option value="$PROJECT_DIR$/application/views/map/defaultmap.php" />
-        <option value="$PROJECT_DIR$/application/_common/models/taximodel.php" />
         <option value="$PROJECT_DIR$/application/controllers/radiotaxi/address.php" />
-        <option value="$PROJECT_DIR$/application/views/radiotaxi/editbooking.php" />
         <option value="$PROJECT_DIR$/sql/solicitaxi_datas_DEV.sql" />
         <option value="$PROJECT_DIR$/application/views/radiotaxi/user/editclient.php" />
+        <option value="$PROJECT_DIR$/application/_common/models/addressmodel.php" />
+        <option value="$PROJECT_DIR$/application/_common/models/taximodel.php" />
+        <option value="$PROJECT_DIR$/sql/solicitaxi_views_DEV.sql" />
+        <option value="$PROJECT_DIR$/application/config/config.php" />
+        <option value="$PROJECT_DIR$/application/controllers/radiotaxi/booking.php" />
+        <option value="$PROJECT_DIR$/application/_common/models/datatablemodel.php" />
+        <option value="$PROJECT_DIR$/application/controllers/radiotaxi/taxi.php" />
+        <option value="$PROJECT_DIR$/application/controllers/services/client.php" />
+        <option value="$PROJECT_DIR$/application/controllers/services/taxi.php" />
+        <option value="$PROJECT_DIR$/application/views/radiotaxi/editbooking.php" />
+        <option value="$PROJECT_DIR$/application/views/map/defaultmap.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="67" />
+    <option name="x" value="66" />
     <option name="y" value="-8" />
-    <option name="width" value="1541" />
-    <option name="height" value="916" />
+    <option name="width" value="1308" />
+    <option name="height" value="784" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -296,7 +298,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,11 +316,73 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="radiotaxi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="radiotaxi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="address" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="htdocs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_common" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -333,9 +397,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/application/controllers" />
     <property name="FullScreen" value="false" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="GoToClass.includeJavaFiles" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="GoToClass.includeJavaFiles" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -362,15 +426,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="-8" width="1541" height="916" extended-state="6" />
+    <frame x="66" y="-8" width="1308" height="784" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23320158" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23285486" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24746451" sideWeight="0.76679844" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25943774" sideWeight="0.76714516" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -445,135 +509,129 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/plupload/uploaduser.php">
+    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/address/edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="52" selection-start="744" selection-end="744" vertical-scroll-proportion="0.53235906">
+        <state line="226" column="10" selection-start="9408" selection-end="9720" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/_common/models/datatablemodel.php">
+    <entry file="file://$PROJECT_DIR$/application/_common/models/bookingmodel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="407" column="29" selection-start="15906" selection-end="15906" vertical-scroll-proportion="-6.901961">
-          <folding>
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1386623800047" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/user/editdriver.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="49" selection-start="10471" selection-end="10471" vertical-scroll-proportion="8.431373">
+        <state line="40" column="20" selection-start="1068" selection-end="1068" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql/solicitaxi_views_DEV.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/application/config/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="133" column="13" selection-start="4349" selection-end="4349" vertical-scroll-proportion="-12.24">
+        <state line="185" column="32" selection-start="6193" selection-end="6193" vertical-scroll-proportion="-5.8846154">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/map/defaultmap.php">
+    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="183" column="24" selection-start="6160" selection-end="6171" vertical-scroll-proportion="-14.692307">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/taxi.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="325" column="30" selection-start="9492" selection-end="9509" vertical-scroll-proportion="-12.653846">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/address/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="231" column="11" selection-start="7038" selection-end="9072" vertical-scroll-proportion="-11.769231">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/users.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="8" selection-start="2243" selection-end="2283" vertical-scroll-proportion="-12.423077">
+        <state line="361" column="8" selection-start="13438" selection-end="13438" vertical-scroll-proportion="-5.3846154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/address.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="23" selection-start="7647" selection-end="7656" vertical-scroll-proportion="-65.4902">
+        <state line="65" column="34" selection-start="1869" selection-end="1885" vertical-scroll-proportion="-3.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/solicitaxi_views_DEV.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="23" selection-start="5368" selection-end="5368" vertical-scroll-proportion="-90.48">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="353" column="13" selection-start="11452" selection-end="11452" vertical-scroll-proportion="-5.3846154">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/_common/models/taximodel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="9" selection-start="4086" selection-end="4086" vertical-scroll-proportion="-43.923077">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="105.38461">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql/solicitaxi_datas_DEV.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/application/_common/models/datatablemodel.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="49" selection-start="405" selection-end="405" vertical-scroll-proportion="-3.48">
+        <state line="374" column="62" selection-start="14183" selection-end="14183" vertical-scroll-proportion="-8.653846">
+          <folding>
+            <marker date="1386816637747" expanded="true" signature="11920:12457" placeholder="..." />
+            <marker date="1386816637747" expanded="true" signature="15242:15451" placeholder="..." />
+            <marker date="1386816637747" expanded="true" signature="15706:15922" placeholder="..." />
+            <marker date="1386816637747" expanded="true" signature="16162:16375" placeholder="..." />
+            <marker date="1386816637747" expanded="true" signature="17141:17350" placeholder="..." />
+            <marker date="1386816637747" expanded="true" signature="17540:17913" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/users.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="14" selection-start="2243" selection-end="2283" vertical-scroll-proportion="-6.8461537">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
+    <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/taxi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="642" column="8" selection-start="34860" selection-end="34860" vertical-scroll-proportion="-4.730769">
+        <state line="59" column="32" selection-start="1737" selection-end="1756" vertical-scroll-proportion="-3.4509804">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/user/viewclient.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/services/client.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="12" selection-start="4207" selection-end="4207" vertical-scroll-proportion="-6.8461537">
+        <state line="118" column="43" selection-start="4914" selection-end="4914" vertical-scroll-proportion="-5.8846154">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/address/edit.php">
+    <entry file="file://$PROJECT_DIR$/application/controllers/radiotaxi/booking.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="21" selection-start="7251" selection-end="8646" vertical-scroll-proportion="-24.307692">
+        <state line="149" column="50" selection-start="5177" selection-end="5184" vertical-scroll-proportion="5.882353">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/services/taxi.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="48" selection-start="2567" selection-end="2567" vertical-scroll-proportion="-8.666667">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/editbooking.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="122" selection-start="14240" selection-end="14339" vertical-scroll-proportion="-3.0784314">
+        <state line="597" column="29" selection-start="23519" selection-end="23524" vertical-scroll-proportion="-2.116883">
           <folding>
             <element signature="n#style#0;n#div#0;n#article#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#article#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#2;n#article#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/radiotaxi/user/editclient.php">
+    <entry file="file://$PROJECT_DIR$/application/views/map/defaultmap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="96" column="21" selection-start="4179" selection-end="4179" vertical-scroll-proportion="0.477707">
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#article#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#0;n#div#1;n#div#0;n#article#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#form#0;n#div#2;n#div#0;n#article#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#footer#0;n#form#0;n#div#0;n#div#12;n#div#1;n#form#0;n#div#2;n#div#0;n#article#0;n#!!top" expanded="true" />
-          </folding>
+        <state line="55" column="41" selection-start="1537" selection-end="1537" vertical-scroll-proportion="0.20415878">
+          <folding />
         </state>
       </provider>
     </entry>

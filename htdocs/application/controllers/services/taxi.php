@@ -16,6 +16,7 @@ class Taxi extends CI_Controller
     {
         parent::__construct();
         $this->load->model("addressmodel", "maddress");
+        $this->load->model("destinationmodel", "mdestination");
         $this->load->model("bookingmodel", "mbooking");
         $this->load->model("taximodel", "mtaxi");
         $this->load->model("profilemodel", "mprofile");
@@ -33,16 +34,18 @@ class Taxi extends CI_Controller
         $taxi = $this->mtaxi->getByField($idTaxi, 'id');
         log_message("debug", "*********retrieving taxo:" . print_r($taxi, true));
         $taxiToSave['id']=$taxi->id;
+        $taxiToSave['idcity']=2;
         $taxiToSave['lat'] = $lat;
         $taxiToSave['lng'] = $lng;
         log_message("debug", "*********saveAddressTaxi:" . print_r('triying to save', true));
         $this->mtaxi->save($taxiToSave);
     }
+
     function getassignedbooking()
     {
         get_layout()->enabled(false);
-        log_message("debug", "*********MEthod:" . print_r('getassignedbooking', true));
-        log_message("debug", "*********method input:" . print_r($_POST, true));
+//        log_message("debug", "*********MEthod:" . print_r('getassignedbooking', true));
+//        log_message("debug", "*********method input:" . print_r($_POST, true));
         $bookingDto=false;
         $uid = $this->input->post('driverid');
         $bookingId = $this->input->post('bookingid');
@@ -64,24 +67,35 @@ class Taxi extends CI_Controller
 
             $booking = $this->mbooking->getByField($bookingId,'id');
             $taxi = $this->mtaxi->getByField($booking->idtaxi, 'id');
+            $driver = $this->mprofile->getByField($taxi->uid, 'uid');
+
+
+            if  ($bookingStatus == '5')
+            {
+                $taxiToSave['id'] = $taxi->id;
+                $taxiToSave['status'] = '0';
+                $this->mtaxi->save($taxiToSave);
+            }
             //log_message("debug", "*********Booking  Data:" . print_r($booking, true));
             if($bookingStatus!='5')
-                $bookingDto = $this->getBookingDto($booking,$taxi);
+            {
+                $bookingDto = $this->getBookingDto($booking,$taxi, $driver);
+            }
 
         }elseif($uid)
         {
             $taxi = $this->mtaxi->getByField($uid, 'uid');
-
+            $driver = $this->mprofile->getByField($taxi->uid, 'uid');
            // log_message("debug", "*********TAxi  Data:" . print_r($taxi, true));
             $booking = $this->mbooking->getAssignedBookingByTaxi($taxi->id);
             //log_message("debug", "*********Booking  Data:" . print_r($booking, true));
             if ($booking)
-                $bookingDto = $this->getBookingDto($booking,$taxi);
+                $bookingDto = $this->getBookingDto($booking,$taxi,$driver);
         }
 
         $this->saveAddressTaxi($taxiLat,$taxiLng, $taxi->id);
 
-        log_message("debug", "*********Booking  Data:" . print_r($bookingDto, true));
+        //log_message("debug", "*********Booking  Data:" . print_r($bookingDto, true));
         if ($bookingDto)
         {
             log_message("debug", "***** bookingDto:" . print_r(json_encode($bookingDto), true));
@@ -97,9 +111,10 @@ class Taxi extends CI_Controller
     }
 
 
-    function getBookingDto($booking,$taxi)
+    function getBookingDto($booking,$taxi,$driver)
     {
         $address = $this->maddress->getByField($booking->idadd,'id');
+        $destination = $this->mdestination->getByField($booking->iddest,'id');
         //log_message("debug", "*********Address  Data:" . print_r($address, true));
         $client = $this->muser->getUserWithProfile($address->uid);
         //log_message("debug", "*********Client  Data:" . print_r($client, true));
@@ -110,9 +125,13 @@ class Taxi extends CI_Controller
         $clientDto= $this->clientToClientDTO($client);
         $clientDto['lat'] = $address->lat;
         $clientDto['lng'] = $address->lng;
+        $clientDto['destlat'] = $destination->lat;
+        $clientDto['destlng'] = $destination->lng;
         $bookingDto['client']= $clientDto;
         //log_message("debug", "***** bookingDto:" . print_r(json_encode($bookingDto), true));
         $bookingDto['taxi']=$taxi;
+
+        $bookingDto['driver']=$driver;
         return $bookingDto;
     }
 

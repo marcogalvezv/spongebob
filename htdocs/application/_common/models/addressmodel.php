@@ -180,7 +180,7 @@ protected $_table_name = "address";
 
     function getAddressBooking($id)
     {
-        $query = $this->db->query("select id, lat, lng, fulladdress, phone, fullname from v_addressbooking where id='".$id."'");
+        $query = $this->db->query("select id, lat, lng, fulladdress, phone, fullname, uid from v_addressbooking where id='".$id."'");
         $result = array();
         if ($query->num_rows() > 0)
         {

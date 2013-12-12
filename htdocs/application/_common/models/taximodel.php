@@ -171,5 +171,17 @@ protected $_table_name = "taxi";
         return $result;
     }
 
+    function getTaxiWithDriverService($id)
+    {
+        $query = $this->db->query("select id, number, plate, taxicolor, taxiphoto, status, fullname as driverfullname, avatar as driverphoto  from v_addresstaxi where uid='".$id."'");
+        $result = array();
+        if ($query->num_rows() > 0)
+        {
+            $result = $query->result_array();
+        }
+        return $result;
+    }
+
+
 
 }

@@ -16,6 +16,7 @@ class Client extends CI_Controller
     {
         parent::__construct();
         $this->load->model("addressmodel", "maddress");
+        $this->load->model("destinationmodel", "mdestination");
         $this->load->model("bookingmodel", "mbooking");
         $this->load->model("taximodel", "mtaxi");
         $this->load->model("profilemodel", "mprofile");
@@ -37,10 +38,16 @@ class Client extends CI_Controller
         //ClientData
         $clientid=$this->input->post('clientid');
         $clientphone=$this->input->post('clientphone');
+
         $clientaddresslat = $this->input->post('clientaddresslat');
         $clientaddresslng = $this->input->post('clientaddresslng');
         $clientaddressdescripcionn = $this->input->post('clientaddressdescripcion');
-        $bookingId= $this->input->post('bookingid');
+
+        $clientaddressdestlat = $this->input->post('clientaddressdestlat');
+        $clientaddressdestlng = $this->input->post('clientaddressdestlng');
+        $clientaddressdestdescripcionn = $this->input->post('clientaddressdestdescripcion');
+
+        $bookingId = $this->input->post('bookingid');
         if ($bookingId)
         {
             log_message("debug", "***** user bookingid:" . print_r(json_encode($bookingId), true));
@@ -59,7 +66,10 @@ class Client extends CI_Controller
             $bookingDto['status']= $booking->status;
             //$bookingDto['client']= $clientDto;
             $bookingDto['taxi']=$taxi;
-            log_message("debug", "***** bookingDto:" . print_r(json_encode($bookingDto), true));
+
+            $driver = $this->mprofile->getByField($taxi->uid, 'uid');
+            $bookingDto['driver']=$driver;
+            log_message("debug", "***** bookingDto for client:" . print_r(json_encode($bookingDto), true));
             header("HTTP/1.0 200 OK");
             echo json_encode($bookingDto);
         }else//New
@@ -71,15 +81,26 @@ class Client extends CI_Controller
             $address['address1'] = $clientaddressdescripcionn;
             $address['status'] = 1;
             $address['idcity'] = 1;
-            log_message("debug", "*****" . print_r($address, true));
+            //log_message("debug", "***** address" . print_r($address, true));
 
             $id = $this->maddress->save($address);
-
             $booking['idadd'] = $id;
+            $destination['lat'] = $clientaddressdestlat;
+            $destination['lng'] = $clientaddressdestlng;
+            $destination['phone'] = $clientphone;
+            $destination['uid'] = $clientid;
+            $destination['address1'] = $clientaddressdestdescripcionn;
+            $destination['status'] = 1;
+            $destination['idcity'] = 1;
+            //log_message("debug", "***** destination" . print_r($destination, true));
+
+            $iddest = $this->mdestination->save($destination);
+
+            $booking['iddest'] = $iddest;
             $booking['status'] = 1;
             $idb = $this->mbooking->save($booking);
             $booking['id'] = $idb;
-            log_message("debug", "*****booking data:" . print_r(json_encode($booking), true));
+           // log_message("debug", "*****booking data:" . print_r(json_encode($booking), true));
 
 
             $client= $this->muser->getUserWithProfile($clientid);
@@ -98,6 +119,8 @@ class Client extends CI_Controller
             $bookingDto['status']= $status;
             $bookingDto['client']= $clientDto;
             $bookingDto['taxi']=null;
+            $bookingDto['driver']=null;
+            log_message("debug", "***** bookingDto for client:" . print_r(json_encode($bookingDto), true));
 
 
             header("HTTP/1.0 200 OK");
