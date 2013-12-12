@@ -50,6 +50,11 @@ class Taxi extends CI_Controller
         $uid = $this->input->post('driverid');
         $bookingId = $this->input->post('bookingid');
         $bookingStatus = $this->input->post('bookingstatus');
+        $bookingIncrement = $this->input->post('bookingincrementstatus');
+
+        if ($bookingIncrement == 'true')
+            $bookingStatus = strval(intval($bookingIncrement)+1);
+
         $taxiLat= $this->input->post('driveraddresslat');
         $taxiLng= $this->input->post('driveraddresslng');
 
@@ -109,6 +114,8 @@ class Taxi extends CI_Controller
             echo json_encode($object);
         }
     }
+
+
 
 
     function getBookingDto($booking,$taxi,$driver)
