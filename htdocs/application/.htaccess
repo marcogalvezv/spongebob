@@ -1,1 +1,12 @@
-Deny from all
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /solicitaxi/spongebob/htdocs/index.php/$1 [L]
+ 
+
+#enable some enhancements on php.ini
+php_value max_execution_time 3600
+php_value max_input_time 3600
+php_value default_socket_timeout 1200
+php_value memory_limit 1024M

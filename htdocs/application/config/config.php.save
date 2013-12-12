@@ -14,7 +14,6 @@
 | path to your installation.
 |
 */
-
 $config['base_url']	= 'http://ec2-54-200-102-103.us-west-2.compute.amazonaws.com/solicitaxi/spongebob/htdocs/';
 
 /*
@@ -184,7 +183,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 $config['log_threshold'] = 4;
 
 /*
-|-----------------------security---------------------------------------------------
+|--------------------------------------------------------------------------
 | Error Logging Directory Path
 |--------------------------------------------------------------------------
 |
