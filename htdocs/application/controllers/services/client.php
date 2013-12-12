@@ -52,22 +52,31 @@ class Client extends CI_Controller
         {
             log_message("debug", "***** user bookingid:" . print_r(json_encode($bookingId), true));
             $booking = $this->mbooking->getById($bookingId);
-            log_message("debug", "***** get booking data:" . print_r(json_encode($booking), true));
+            //log_message("debug", "***** get booking data:" . print_r(json_encode($booking), true));
             $idTaxi = $booking->idtaxi;
-            log_message("debug", "***** get taxi data idTAci:" . print_r(json_encode($idTaxi), true));
+            //log_message("debug", "***** get taxi data idTAci:" . print_r(json_encode($idTaxi), true));
             $taxi = $this->mtaxi->getById($idTaxi);
-            log_message("debug", "***** get taxi data:" . print_r(json_encode($taxi), true));
+            //log_message("debug", "***** get taxi data:" . print_r(json_encode($taxi), true));
             $address = $this->maddress->getById($booking->idadd);
-            log_message("debug", "***** get address data:" . print_r(json_encode($address), true));
+            //log_message("debug", "***** get address data:" . print_r(json_encode($address), true));
             $client= $this->muser->getUserWithProfile($address->uid);
-            log_message("debug", "***** get client data:" . print_r(json_encode($client), true));
+            //log_message("debug", "***** get client data:" . print_r(json_encode($client), true));
             $bookingDto['id']= $booking->id;
 
             $bookingDto['status']= $booking->status;
             //$bookingDto['client']= $clientDto;
+            $taxiphoto = str_replace("temp/taxi/","",$taxi->taxiphoto);
+            $taxiphoto = str_replace(".jpg","",$taxiphoto);
+
+            $taxi->taxiphoto = $taxiphoto;
             $bookingDto['taxi']=$taxi;
 
             $driver = $this->mprofile->getByField($taxi->uid, 'uid');
+            $driveravatar = $driver->avatar;
+            $driveravatar = str_replace("temp/user/","",$driveravatar);
+            $driveravatar = str_replace(".jpg","",$driveravatar);
+            $driver->avatar = $driveravatar;
+
             $bookingDto['driver']=$driver;
             log_message("debug", "***** bookingDto for client:" . print_r(json_encode($bookingDto), true));
             header("HTTP/1.0 200 OK");
@@ -206,10 +215,15 @@ class Client extends CI_Controller
         $pid = $this->mprofile->save($profile);
         if ($uid)
         {
-            header("HTTP/1.0 200 OK");
-
-            log_message("debug", "*********Data:" . print_r($user, true));
-            echo json_encode($user);
+            $client = $this->muser->getUserWithProfile($uid);
+            log_message("debug", "*********Data Client: " . print_r($client, true));
+            if ($client)
+            {
+                $clientDto= $this->clientToClientDTO($client);
+                log_message("debug", "*********Client dto Data:" . print_r($clientDto, true));
+                header("HTTP/1.0 200 OK");
+                echo json_encode($clientDto);
+            }
         }else
         {
             $error['message']='Not a valid Request';
